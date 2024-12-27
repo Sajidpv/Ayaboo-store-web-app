@@ -1,0 +1,32 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:store/utils/constants/colors.dart';
+
+class CustomErrorWidget extends StatelessWidget {
+  final FlutterErrorDetails errorDetails;
+  const CustomErrorWidget({super.key, required this.errorDetails});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // Image.asset('assets/images/error.png'),
+              Text(
+                kDebugMode
+                    ? errorDetails.summary.toString()
+                    : 'Oups! Something went wrong!',
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontSize: 18, color: TColors.black),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

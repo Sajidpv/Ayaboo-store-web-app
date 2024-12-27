@@ -1,0 +1,60 @@
+name: store
+description: "Ayaboo b2b Store module"
+publish_to: 'none' 
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.3
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  responsive_builder: ^0.7.1
+  flutter_svg: ^2.0.16
+  get: ^4.6.6
+  intl: ^0.20.1
+  connectivity_plus: ^6.1.1
+  lottie: ^3.2.0
+  get_storage: ^2.1.1
+  shimmer: ^3.0.0
+  clipboard: ^0.1.3
+  image_picker: ^1.1.2
+  url_launcher: ^6.3.1
+  cached_network_image: ^3.4.1
+  multi_select_flutter: ^4.1.3
+  flutter_native_splash: ^2.4.3
+  smooth_page_indicator: ^1.2.0+3
+  flutter_typeahead: ^5.2.0
+  flutter_dropzone: ^4.2.1
+  web: ^1.1.0
+  html: ^0.15.5
+  http: ^1.2.2
+  fl_chart: ^0.70.0
+  data_table_2: ^2.5.18
+  url_strategy: ^0.3.0
+  iconify_flutter: ^0.0.7
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^4.0.0
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/logos/
+    - assets/icons/
+
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+
