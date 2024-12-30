@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:store/common/widgets/layouts/sidebar/menu/menu_item.dart';
 import 'package:store/routes/routes.dart';
 import 'package:store/utils/constants/colors.dart';
@@ -26,10 +27,14 @@ class SSidebar extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SvgPicture.asset(
-                SImages.lightAppLogo,
-                fit: BoxFit.fill,
-              ).showCursorOnHover,
+              InkWell(
+                onTap: () => Get.offAllNamed(SRoutes.dashboard),
+                child: SvgPicture.asset(
+                  SImages.lightAppLogo,
+                  width: 150,
+                  fit: BoxFit.cover,
+                ).showCursorOnHover,
+              ),
               Column(
                 spacing: TSizes.md,
                 children: [

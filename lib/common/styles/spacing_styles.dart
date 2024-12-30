@@ -7,4 +7,6 @@ class SSpacingStyle {
       bottom: TSizes.defaultSpace,
       left: TSizes.defaultSpace,
       right: TSizes.defaultSpace);
+  static const EdgeInsetsGeometry defaultPadding = EdgeInsets.only(
+      top: TSizes.sm, bottom: TSizes.sm, left: TSizes.md, right: TSizes.md);
 }

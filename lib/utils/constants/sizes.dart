@@ -20,6 +20,7 @@ class TSizes {
   // Button sizes
   static const double buttonHeight = 18.0;
   static const double buttonRadius = 12.0;
+  static const double buttonMinimumRadius = 4.0;
   static const double buttonWidth = 120.0;
   static const double buttonElevation = 4.0;
 
@@ -49,6 +50,7 @@ class TSizes {
 
   // Input field
   static const double inputFieldRadius = 12.0;
+  static const double inputFieldMinimumRadius = 4.0;
   static const double spaceBtwInputFields = 16.0;
 
   // Card sizes

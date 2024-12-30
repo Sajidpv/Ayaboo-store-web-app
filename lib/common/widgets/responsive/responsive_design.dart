@@ -14,7 +14,7 @@ class SResponsiveDesign extends StatelessWidget {
     return LayoutBuilder(builder: (_, constraints) {
       if (constraints.maxWidth >= TSizes.desktopScreenSize) {
         return desktop;
-      } else if (constraints.maxWidth > TSizes.desktopScreenSize &&
+      } else if (constraints.maxWidth < TSizes.desktopScreenSize &&
           constraints.maxWidth >= TSizes.tabletScreenSize) {
         return tablet;
       } else {

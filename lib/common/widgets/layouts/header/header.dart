@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:store/common/widgets/images/s_rounded_image.dart';
+import 'package:store/common/widgets/shimmers/shimmer.dart';
+import 'package:store/features/auth/controllers/login_controller.dart';
+import 'package:store/features/auth/controllers/user_controller.dart';
 import 'package:store/utils/constants/colors.dart';
 import 'package:store/utils/constants/enums.dart';
-import 'package:store/utils/constants/image_strings.dart';
 import 'package:store/utils/constants/sizes.dart';
 import 'package:store/utils/device/device_utility.dart';
 import 'package:store/utils/extensions/hover_extension.dart';
@@ -14,6 +17,7 @@ class SHeader extends StatelessWidget implements PreferredSizeWidget {
   final GlobalKey<ScaffoldState>? scaffoldKey;
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
     return Container(
       decoration: const BoxDecoration(
           color: TColors.white,
@@ -67,28 +71,75 @@ class SHeader extends StatelessWidget implements PreferredSizeWidget {
           ).moveUpOnHover,
           (TSizes.spaceBtwItems / 2).width,
           if (!SDeviceUtils.isMobileScreen(context))
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  'Sajid PV',
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
-                Text(
-                  'sajidpv@gmail.com',
-                  style: Theme.of(context).textTheme.labelMedium,
-                ),
-              ],
+            Obx(
+              () => Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  controller.loading.value
+                      ? const SShimmerEffect(width: 50, heigh: 13)
+                      : Text(
+                          controller.user.value.name ?? 'No user',
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
+                  controller.loading.value
+                      ? const SShimmerEffect(width: 50, heigh: 13)
+                      : Text(
+                          controller.user.value.email ?? '',
+                          style: Theme.of(context).textTheme.labelMedium,
+                        ),
+                ],
+              ),
             ),
           TSizes.md.width,
-          const SRoundedImage(
-            width: 40,
-            height: 40,
-            padding: 2,
-            imageType: ImageType.asset,
-            image: SImages.user,
-          ).showCursorOnHover,
+          InkWell(
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  shape: RoundedRectangleBorder(
+                    borderRadius:
+                        BorderRadius.circular(TSizes.inputFieldMinimumRadius),
+                  ),
+                  title: const Text('Logout'),
+                  content: const Text('Are you sure you want to logout?'),
+                  actions: [
+                    TextButton(
+                      onPressed: () {
+                        Get.back();
+                      },
+                      child: const Text('Cancel'),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        LoginController.instance.logOut();
+                        Get.back();
+                      },
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 25.0),
+                        child: Text('Logout'),
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            },
+            child: Obx(
+              () => controller.loading.value
+                  ? const SShimmerEffect(
+                      width: 40,
+                      heigh: 40,
+                      radius: TSizes.md,
+                    )
+                  : SRoundedImage(
+                      width: 40,
+                      height: 40,
+                      padding: 2,
+                      imageType: ImageType.asset,
+                      image: controller.user.value.image ?? '',
+                    ).showCursorOnHover,
+            ),
+          ),
         ],
       ),
     );

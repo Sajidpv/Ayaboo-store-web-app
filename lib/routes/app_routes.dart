@@ -9,12 +9,10 @@ class SAppRoutes {
   static final List<GetPage> pages = [
     GetPage(
       name: SRoutes.splash,
-      middlewares: [TRouteMiddleware()],
       page: () => const App(),
     ),
     GetPage(
       name: SRoutes.login,
-      middlewares: [TRouteMiddleware()],
       page: () => const LoginScreen(),
     ),
     GetPage(

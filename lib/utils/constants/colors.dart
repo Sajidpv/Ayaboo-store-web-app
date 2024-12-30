@@ -47,16 +47,16 @@ class TColors {
 
   //Gradients
   static LinearGradient myGradient(
-      {AlignmentGeometry? end = Alignment.centerRight,
-      AlignmentGeometry? start = Alignment.topLeft,
-      List<Color> colors = const [
-        primary,
-        secondary,
-      ]}) {
+      {AlignmentGeometry? end, AlignmentGeometry? start, List<Color>? colors}) {
     return LinearGradient(
-      colors: colors,
-      begin: start!,
-      end: end!,
+      colors: colors ??
+          [
+            const Color.fromARGB(255, 199, 228, 255).withValues(alpha: .8),
+            white.withValues(alpha: .8),
+            white.withValues(alpha: .8),
+          ],
+      begin: start ?? Alignment.topRight,
+      end: end ?? Alignment.bottomLeft,
     );
   }
 }

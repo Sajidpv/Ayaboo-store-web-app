@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:store/common/widgets/layouts/templates/site_layout.dart';
+import 'package:store/bindings/general_bindings.dart';
 import 'package:store/routes/app_routes.dart';
 import 'package:store/routes/routes.dart';
 import 'package:store/utils/constants/text_strings.dart';
@@ -25,7 +25,7 @@ class App extends StatelessWidget {
       darkTheme: TAppTheme.darkTheme,
       debugShowCheckedModeBanner: false,
       getPages: SAppRoutes.pages,
-      initialRoute: SRoutes.login,
+      initialRoute: SRoutes.dashboard,
       unknownRoute: GetPage(
         name: '/page-not-found',
         page: () => const Scaffold(
@@ -34,16 +34,7 @@ class App extends StatelessWidget {
           ),
         ),
       ),
-      // initialBinding: GeneralBindings(),
+      initialBinding: GeneralBindings(),
     );
   }
 }
-
-// class ResponsiveDesignScreen extends StatelessWidget {
-//   const ResponsiveDesignScreen({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return const SSiteLayout();
-//   }
-// }
