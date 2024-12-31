@@ -19,7 +19,7 @@ class DesktopScreen extends StatelessWidget {
                   ///Header/Nav
                   const SHeader(),
                   //////body
-                  body ?? const SizedBox()
+                  Expanded(child: body ?? const SizedBox())
                 ],
               ))
         ],

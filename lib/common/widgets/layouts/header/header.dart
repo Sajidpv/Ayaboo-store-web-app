@@ -32,7 +32,7 @@ class SHeader extends StatelessWidget implements PreferredSizeWidget {
                 onPressed: () => scaffoldKey?.currentState?.openDrawer(),
               )
             : null,
-
+        automaticallyImplyLeading: false,
         ///////Search bar
         title: SDeviceUtils.isDesktopScreen(context)
             ? SizedBox(

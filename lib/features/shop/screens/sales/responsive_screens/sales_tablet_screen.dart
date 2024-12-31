@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Desktop extends StatelessWidget {
-  const Desktop({super.key});
+class SalesTabletScreen extends StatelessWidget {
+  const SalesTabletScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
