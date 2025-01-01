@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:store/common/widgets/layouts/header/header.dart';
+import 'package:store/common/widgets/layouts/sidebar/notification_sidebar.dart';
 import 'package:store/common/widgets/layouts/sidebar/sidebar.dart';
+import 'package:store/utils/extensions/device_size_extensions.dart';
 
 class MobileScreen extends StatelessWidget {
   MobileScreen({super.key, this.body});
@@ -11,6 +13,9 @@ class MobileScreen extends StatelessWidget {
     return Scaffold(
         key: scaffoldKey,
         drawer: const SSidebar(),
+        endDrawer: SNotificationSidebar(
+          width: context.mediaQueryWidth * .9,
+        ),
         appBar: SHeader(
           scaffoldKey: scaffoldKey,
         ),

@@ -13,6 +13,11 @@ class SidebarController extends GetxController {
   bool isActive(String route) => activeItem.value == route;
   bool isHovered(String route) => hoveredItem.value == route;
 
+  bool isParentActive(String parentRoute, List<dynamic>? children) {
+    if (isActive(parentRoute)) return true;
+    return children?.any((child) => isActive(child.route ?? '')) ?? false;
+  }
+
   void onMenuTaped(String route) {
     if (!isActive(route)) {
       changeActiveItem(route);

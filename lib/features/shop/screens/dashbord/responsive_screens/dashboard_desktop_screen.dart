@@ -26,21 +26,27 @@ class DashboardDesktopScreen extends StatelessWidget {
               ),
               Row(
                 children: [
-                  const Flexible(
+                  Flexible(
                     flex: 2,
                     child: SSectionHeaderTemplate(
-                      title: 'Top Products',
+                      title: Text(
+                        'Top Products',
+                        style: Theme.of(context).textTheme.headlineSmall,
+                      ),
                       action: 'Period',
-                      child: SizedBox(),
+                      child: const SizedBox(),
                     ),
                   ),
                   TSizes.spaceBtwItems.width,
-                  const Flexible(
+                  Flexible(
                     flex: 3,
                     child: SSectionHeaderTemplate(
-                      title: 'Payment Status',
+                      title: Text(
+                        'Payment Status',
+                        style: Theme.of(context).textTheme.headlineSmall,
+                      ),
                       action: 'Pending',
-                      child: SizedBox(),
+                      child: const SizedBox(),
                     ),
                   )
                 ],

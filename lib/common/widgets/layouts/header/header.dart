@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:store/common/widgets/images/s_rounded_image.dart';
+import 'package:store/common/widgets/layouts/sidebar/notification_sidebar.dart';
 import 'package:store/common/widgets/shimmers/shimmer.dart';
 import 'package:store/features/auth/controllers/login_controller.dart';
 import 'package:store/features/auth/controllers/user_controller.dart';
@@ -67,7 +68,7 @@ class SHeader extends StatelessWidget implements PreferredSizeWidget {
                 color: TColors.darkGrey,
               ),
             ),
-            onPressed: () {},
+            onPressed: () => Scaffold.of(context).openEndDrawer(),
           ).moveUpOnHover,
           (TSizes.spaceBtwItems / 2).width,
           if (!SDeviceUtils.isMobileScreen(context))

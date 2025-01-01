@@ -82,6 +82,18 @@ class SImages {
   static const String saleIcon = "assets/icons/dashboard/sale-icon.png";
   static const String shippedIcon = "assets/icons/dashboard/shipped-icon.png";
 
+  // -- Sidebar-icons
+  static const String sidDashboardIcon = "assets/icons/sidebar/dashbord.png";
+  static const String sideProductICon = "assets/icons/sidebar/products.png";
+  static const String sideSaleIcon = "assets/icons/sidebar/sales.png";
+  static const String sideRefundIcon = "assets/icons/sidebar/refund.png";
+  static const String sideCustICon = "assets/icons/sidebar/customer.png";
+  static const String sideStockICon = "assets/icons/sidebar/stock.png";
+  static const String sideSellerIcon = "assets/icons/sidebar/seller.png";
+  static const String sideReportIcon = "assets/icons/sidebar/reports.png";
+  static const String sideSettingIcon = "assets/icons/sidebar/settings.png";
+  static const String sideAccountIcon = "assets/icons/sidebar/accounts.png";
+
   // -- Product Reviews
   static const String userProfileImage1 =
       "assets/images/reviews/review_profile_image_1.jpg";

@@ -51,6 +51,7 @@ flutter:
     - assets/logos/
     - assets/icons/
     - assets/icons/dashboard/
+    - assets/icons/sidebar/
 
   # fonts:
   #   - family: Schyler

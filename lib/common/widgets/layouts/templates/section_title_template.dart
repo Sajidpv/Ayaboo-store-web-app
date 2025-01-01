@@ -10,13 +10,17 @@ class SSectionHeaderTemplate extends StatelessWidget {
     required this.title,
     required this.action,
     required this.child,
+    this.elevation = 1,
+    this.color,
   });
-  final String title, action;
-  final Widget child;
+  final String action;
+  final Widget child, title;
+  final double elevation;
+  final Color? color;
   @override
   Widget build(BuildContext context) {
     return SContainerWidget(
-      elevation: 1,
+      elevation: elevation,
       radius: 8,
       padding: const EdgeInsets.symmetric(
           horizontal: TSizes.lg, vertical: TSizes.lg),
@@ -25,14 +29,9 @@ class SSectionHeaderTemplate extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Expanded(
-                child: Text(
-                  title,
-                  style: Theme.of(context).textTheme.headlineSmall,
-                ),
-              ),
+              title,
+              const Spacer(),
               ElevatedButton(
                   onPressed: () {},
                   child: Padding(
@@ -40,10 +39,10 @@ class SSectionHeaderTemplate extends StatelessWidget {
                         const EdgeInsets.symmetric(vertical: 0, horizontal: 15),
                     child: Text(
                       action,
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleLarge!
-                          .apply(fontSizeFactor: .8, color: TColors.white),
+                      style: Theme.of(context).textTheme.titleLarge!.apply(
+                            fontSizeFactor: .8,
+                            color: TColors.white,
+                          ),
                     ),
                   )).moveUpOnHover,
             ],

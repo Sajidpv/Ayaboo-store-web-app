@@ -8,55 +8,104 @@ import 'package:store/utils/extensions/hover_extension.dart';
 class MenuItem extends StatelessWidget {
   const MenuItem({
     super.key,
-    required this.route,
-    required this.icon,
+    this.route,
+    this.image,
     required this.itemName,
-    this.isChild = false,
+    this.children,
+    this.icon = Icons.adjust_rounded,
   });
-  final String route;
-  final IconData icon;
+  final String? route;
+  final String? image;
+  final IconData? icon;
   final String itemName;
-  final bool isChild;
+
+  final List<MenuItem>? children;
 
   @override
   Widget build(BuildContext context) {
     final menuController = Get.put(SidebarController());
+    final isExpandable = children != null && children!.isNotEmpty;
+    return isExpandable
+        ? _buildExpansionTile(menuController, context)
+        : _buildMenu(menuController: menuController, context: context);
+  }
+
+// Widget for expandable menu item
+  Widget _buildExpansionTile(
+      SidebarController menuController, BuildContext context) {
+    return Obx(
+      () => Theme(
+        data: Theme.of(context).copyWith(
+          dividerColor: Colors.transparent,
+        ),
+        child: ExpansionTile(
+          visualDensity: const VisualDensity(vertical: -4, horizontal: -4),
+          tilePadding: const EdgeInsets.only(right: TSizes.md),
+          key: PageStorageKey<String>(route ?? ''), // Ensure state persistence
+          initiallyExpanded: menuController.isActive(route ?? ''),
+          title: _buildMenuTitle(
+              menuController, context, menuController.isActive(route ?? '')),
+          children: children!
+              .map((child) => Padding(
+                    padding: EdgeInsets.symmetric(
+                        vertical: menuController.isActive(route ?? "")
+                            ? TSizes.md
+                            : TSizes.sm,
+                        horizontal: TSizes.lg),
+                    child: child,
+                  ))
+              .toList(),
+        ).showCursorOnHover.moveUpOnHover,
+      ),
+    );
+  }
+
+  Widget _buildMenu(
+      {required SidebarController menuController,
+      required BuildContext context}) {
     return InkWell(
-      onTap: () => menuController.onMenuTaped(route),
+      onTap: () => menuController.onMenuTaped(route ?? ''),
       onHover: (hovering) => hovering
-          ? menuController.changeHoveredItem(route)
+          ? menuController.changeHoveredItem(route ?? '')
           : menuController.changeHoveredItem(''),
       child: Obx(
         () => Container(
           decoration: BoxDecoration(
-              color: menuController.isActive(route)
+              color: menuController.isActive(route ?? '')
                   ? TColors.black
                   : Colors.transparent,
               borderRadius: BorderRadius.circular(TSizes.cardRadiusSm)),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(
-                    vertical:
-                        menuController.isActive(route) ? TSizes.md : TSizes.sm,
-                    horizontal: TSizes.md),
-                child: Icon(
-                  icon,
-                  color: TColors.primary,
-                ),
-              ),
-              Flexible(
-                  child: Text(itemName,
-                      style: Theme.of(context).textTheme.bodyLarge?.apply(
-                            color: menuController.isActive(route)
-                                ? TColors.white
-                                : TColors.darkGrey,
-                          )))
-            ],
-          ),
+          child: _buildMenuTitle(
+              menuController, context, menuController.isActive(route ?? '')),
         ).showCursorOnHover.moveUpOnHover,
       ),
+    );
+  }
+
+  Row _buildMenuTitle(
+      SidebarController menuController, BuildContext context, bool isActive) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Padding(
+            padding: EdgeInsets.symmetric(
+                vertical: menuController.isActive(route ?? '')
+                    ? TSizes.md
+                    : TSizes.xs,
+                horizontal: TSizes.md),
+            child: image != null
+                ? Image.asset(image!)
+                : Icon(
+                    icon,
+                    color: TColors.grey.withValues(alpha: .6),
+                    size: 10,
+                  )),
+        Flexible(
+            child: Text(itemName,
+                style: Theme.of(context).textTheme.bodyLarge?.apply(
+                      color: isActive ? TColors.white : TColors.darkGrey,
+                    )))
+      ],
     );
   }
 }

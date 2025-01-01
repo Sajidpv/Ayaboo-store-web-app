@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:store/common/widgets/containers/container_widget.dart';
 import 'package:store/common/widgets/layouts/templates/section_title_template.dart';
 import 'package:store/features/shop/screens/dashbord/components/dashboard_order_card_component.dart';
-import 'package:store/utils/constants/colors.dart';
 import 'package:store/utils/constants/image_strings.dart';
 import 'package:store/utils/constants/sizes.dart';
-import 'package:store/utils/extensions/hover_extension.dart';
 
 class DashboardOrderSection extends StatelessWidget {
   const DashboardOrderSection({
@@ -14,16 +12,20 @@ class DashboardOrderSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Expanded(
+    return Expanded(
       child: SContainerWidget(
           elevation: 1,
           radius: 8,
-          padding:
-              EdgeInsets.symmetric(horizontal: TSizes.lg, vertical: TSizes.lg),
+          padding: const EdgeInsets.symmetric(
+              horizontal: TSizes.lg, vertical: TSizes.lg),
           child: SSectionHeaderTemplate(
-            title: 'Order Status',
+            elevation: 0,
+            title: Text(
+              'Order Status',
+              style: Theme.of(context).textTheme.headlineSmall,
+            ),
             action: 'All Orders',
-            child: Column(
+            child: const Column(
               spacing: TSizes.spaceBtwSections,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
