@@ -3,14 +3,26 @@ import 'package:store/routes/routes.dart';
 import 'package:store/utils/device/device_utility.dart';
 
 class SidebarController extends GetxController {
-  final activeItem = SRoutes.dashboard.obs;
+  final activeItem = ''.obs;
   final hoveredItem = ''.obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+    activeItem.value =
+        Get.currentRoute.isNotEmpty ? Get.currentRoute : SRoutes.dashboard;
+  }
+
   void changeActiveItem(String route) => activeItem.value = route;
+
   void changeHoveredItem(String route) {
     if (!isActive(route)) hoveredItem.value = route;
   }
 
+  bool isExActive(String route) => activeItem.value.contains(route);
+
   bool isActive(String route) => activeItem.value == route;
+
   bool isHovered(String route) => hoveredItem.value == route;
 
   bool isParentActive(String parentRoute, List<dynamic>? children) {

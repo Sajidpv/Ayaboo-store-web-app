@@ -13,8 +13,9 @@ class MenuItem extends StatelessWidget {
     required this.itemName,
     this.children,
     this.icon = Icons.adjust_rounded,
+    this.parent,
   });
-  final String? route;
+  final String? route, parent;
   final String? image;
   final IconData? icon;
   final String itemName;
@@ -45,7 +46,7 @@ class MenuItem extends StatelessWidget {
           key: PageStorageKey<String>(route ?? ''), // Ensure state persistence
           initiallyExpanded: menuController.isActive(route ?? ''),
           title: _buildMenuTitle(
-              menuController, context, menuController.isActive(route ?? '')),
+              menuController, context, menuController.isExActive(parent ?? '')),
           children: children!
               .map((child) => Padding(
                     padding: EdgeInsets.symmetric(
@@ -98,7 +99,9 @@ class MenuItem extends StatelessWidget {
                 ? Image.asset(image!)
                 : Icon(
                     icon,
-                    color: TColors.grey.withValues(alpha: .6),
+                    color: isActive
+                        ? TColors.primary
+                        : TColors.grey.withValues(alpha: .6),
                     size: 10,
                   )),
         Flexible(

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 // ignore: avoid_web_libraries_in_flutter
 import 'dart:html' as html;
@@ -20,5 +21,17 @@ extension HoverExtension on Widget {
     return TranslateOnHover(
       child: this,
     );
+  }
+}
+
+extension ConditionalHoverExtension on Widget {
+  Widget get applyHoverEffectIfWeb {
+    return kIsWeb ? moveUpOnHover : this;
+  }
+}
+
+extension ConditionalCursorOnHoverExtension on Widget {
+  Widget get showCursorOnHoverIfWeb {
+    return kIsWeb ? showCursorOnHover : this;
   }
 }

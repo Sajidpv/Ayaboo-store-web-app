@@ -67,7 +67,7 @@ class DashboardCardComponent extends StatelessWidget {
             ),
           ],
         ),
-      ).moveUpOnHover.showCursorOnHover,
+      ).applyHoverEffectIfWeb.showCursorOnHoverIfWeb,
     );
   }
 }

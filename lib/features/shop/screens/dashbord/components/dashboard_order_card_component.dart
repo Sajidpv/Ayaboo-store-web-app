@@ -63,7 +63,7 @@ class DashboardOrderCardComponent extends StatelessWidget {
             ),
           ],
         ),
-      ).moveUpOnHover.showCursorOnHover,
+      ).applyHoverEffectIfWeb.showCursorOnHoverIfWeb,
     );
   }
 }

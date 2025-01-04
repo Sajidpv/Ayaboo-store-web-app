@@ -83,7 +83,7 @@ class DashbordMobileScreen extends StatelessWidget {
                                         fontSizeFactor: .7,
                                         color: TColors.white),
                               ),
-                            )).moveUpOnHover
+                            )).applyHoverEffectIfWeb
                       ],
                     ),
                     const DashboardOrderCardComponent(

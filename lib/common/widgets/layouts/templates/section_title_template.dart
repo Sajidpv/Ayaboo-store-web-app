@@ -44,7 +44,7 @@ class SSectionHeaderTemplate extends StatelessWidget {
                             color: TColors.white,
                           ),
                     ),
-                  )).moveUpOnHover,
+                  )).applyHoverEffectIfWeb,
             ],
           ),
           child

@@ -105,7 +105,7 @@ class DashbordTabletScreen extends StatelessWidget {
                                         fontSizeFactor: .8,
                                         color: TColors.white),
                               ),
-                            )).moveUpOnHover
+                            )).applyHoverEffectIfWeb
                       ],
                     ),
                     const Row(

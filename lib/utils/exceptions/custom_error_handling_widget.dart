@@ -8,6 +8,7 @@ class CustomErrorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint(errorDetails.stack.toString());
     return Scaffold(
       body: Center(
         child: Padding(
@@ -19,7 +20,7 @@ class CustomErrorWidget extends StatelessWidget {
               Text(
                 kDebugMode
                     ? errorDetails.summary.toString()
-                    : 'Oups! Something went wrong!',
+                    : 'Oops! Something went wrong!',
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontSize: 18, color: TColors.black),
               ),

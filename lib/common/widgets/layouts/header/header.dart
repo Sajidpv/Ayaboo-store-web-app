@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:store/common/widgets/images/s_rounded_image.dart';
-import 'package:store/common/widgets/layouts/sidebar/notification_sidebar.dart';
 import 'package:store/common/widgets/shimmers/shimmer.dart';
 import 'package:store/features/auth/controllers/login_controller.dart';
 import 'package:store/features/auth/controllers/user_controller.dart';
@@ -19,6 +18,7 @@ class SHeader extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final controller = UserController.instance;
+
     return Container(
       decoration: const BoxDecoration(
           color: TColors.white,
@@ -52,7 +52,7 @@ class SHeader extends StatelessWidget implements PreferredSizeWidget {
             IconButton(
               icon: const Icon(Icons.search),
               onPressed: () {},
-            ).moveUpOnHover,
+            ).applyHoverEffectIfWeb,
           if (SDeviceUtils.isDesktopScreen(context))
             IconButton(
               icon: const Icon(
@@ -60,7 +60,7 @@ class SHeader extends StatelessWidget implements PreferredSizeWidget {
                 color: TColors.darkGrey,
               ),
               onPressed: () {},
-            ).moveUpOnHover,
+            ).applyHoverEffectIfWeb,
           IconButton(
             icon: const Badge(
               child: Icon(
@@ -69,7 +69,7 @@ class SHeader extends StatelessWidget implements PreferredSizeWidget {
               ),
             ),
             onPressed: () => Scaffold.of(context).openEndDrawer(),
-          ).moveUpOnHover,
+          ).applyHoverEffectIfWeb,
           (TSizes.spaceBtwItems / 2).width,
           if (!SDeviceUtils.isMobileScreen(context))
             Obx(
@@ -138,7 +138,7 @@ class SHeader extends StatelessWidget implements PreferredSizeWidget {
                       padding: 2,
                       imageType: ImageType.asset,
                       image: controller.user.value.image ?? '',
-                    ).showCursorOnHover,
+                    ).showCursorOnHoverIfWeb,
             ),
           ),
         ],

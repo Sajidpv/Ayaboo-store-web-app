@@ -19,7 +19,7 @@ class LoginHeader extends StatelessWidget {
           ),
           width: 120,
           height: 100,
-        ).showCursorOnHover,
+        ).showCursorOnHoverIfWeb,
         Text(STexts.loginTitle,
             style: Theme.of(context)
                 .textTheme

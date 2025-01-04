@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:store/common/widgets/layouts/sidebar/menu/menu_item.dart';
+import 'package:store/common/widgets/layouts/sidebar/widgets/menu_item.dart';
 import 'package:store/routes/routes.dart';
 import 'package:store/utils/constants/colors.dart';
 import 'package:store/utils/constants/image_strings.dart';
@@ -38,7 +38,7 @@ class SSidebar extends StatelessWidget {
                   SImages.lightAppLogo,
                   width: 150,
                   fit: BoxFit.cover,
-                ).showCursorOnHover,
+                ).showCursorOnHoverIfWeb,
               ),
               SizedBox(
                 child: Theme(
@@ -70,6 +70,7 @@ class SSidebar extends StatelessWidget {
                     itemName: 'Dashboard',
                   ),
                   const MenuItem(
+                    parent: 'products',
                     image: SImages.sideProductICon,
                     itemName: 'Products',
                     children: [
@@ -78,12 +79,13 @@ class SSidebar extends StatelessWidget {
                         itemName: 'All Products',
                       ),
                       MenuItem(
-                        route: SRoutes.product,
+                        route: SRoutes.productReview,
                         itemName: 'Product Reviews',
                       ),
                     ],
                   ),
                   const MenuItem(
+                    parent: 'sales',
                     image: SImages.sideSaleIcon,
                     itemName: 'Sales',
                     children: [
@@ -101,115 +103,117 @@ class SSidebar extends StatelessWidget {
                   ),
                   1.height,
                   const MenuItem(
-                    route: SRoutes.customers,
+                    route: SRoutes.n404,
                     image: SImages.sideCustICon,
                     itemName: 'Customers',
                   ),
                   const MenuItem(
-                    route: SRoutes.stockManagement,
+                    parent: 'stock',
                     image: SImages.sideStockICon,
                     itemName: 'Stock Management',
                     children: [
                       MenuItem(
-                        route: SRoutes.dashboard,
+                        route: SRoutes.stockTransfer,
                         itemName: 'Stock Transfer',
                       ),
                       MenuItem(
-                        route: SRoutes.dashboard,
+                        route: SRoutes.stockRecived,
                         itemName: 'Stock Recived',
                       ),
-                      MenuItem(route: '', itemName: 'Returns')
+                      MenuItem(route: SRoutes.stockReturns, itemName: 'Returns')
                     ],
                   ),
                   const MenuItem(
-                    route: SRoutes.sellerManagment,
+                    parent: 'seller',
                     image: SImages.sideSellerIcon,
                     itemName: 'Seller Management',
                     children: [
                       MenuItem(
-                        route: SRoutes.dashboard,
+                        route: SRoutes.sellerProducts,
                         itemName: 'New Product from seller',
                       ),
                       MenuItem(
-                        route: SRoutes.dashboard,
+                        route: SRoutes.sellerStocks,
                         itemName: 'Stock request',
                       ),
                       MenuItem(
-                        route: SRoutes.dashboard,
+                        route: SRoutes.sellerConversation,
                         itemName: 'Conversations',
                       ),
                       MenuItem(
-                        route: SRoutes.dashboard,
+                        route: SRoutes.sellerReturns,
                         itemName: 'Return to seller',
                       ),
                     ],
                   ),
                   const MenuItem(
-                    route: SRoutes.reports,
+                    parent: 'reports',
                     image: SImages.sideReportIcon,
                     itemName: 'Reports',
                     children: [
                       MenuItem(
-                        route: SRoutes.dashboard,
+                        route: SRoutes.reportSale,
                         itemName: 'Product Sale',
                       ),
                       MenuItem(
-                        route: SRoutes.dashboard,
+                        route: SRoutes.reportStock,
                         itemName: 'Product Stock',
                       ),
                       MenuItem(
-                        route: SRoutes.dashboard,
+                        route: SRoutes.reportWishlist,
                         itemName: 'Product Wishlist',
                       ),
                       MenuItem(
-                        route: SRoutes.dashboard,
+                        route: SRoutes.reportSearchs,
                         itemName: 'User Searches',
                       ),
                     ],
                   ),
                   const MenuItem(
-                    route: SRoutes.accounts,
+                    parent: 'accounts',
                     image: SImages.sideAccountIcon,
                     itemName: 'Accounts',
                     children: [
                       MenuItem(
-                        route: SRoutes.dashboard,
+                        route: SRoutes.accountPayment,
                         itemName: 'Payment History',
                       ),
                       MenuItem(
-                        route: SRoutes.dashboard,
+                        route: SRoutes.accountRent,
                         itemName: 'Rent History',
                       ),
                       MenuItem(
-                        route: SRoutes.dashboard,
+                        route: SRoutes.accountCommission,
                         itemName: 'Commission History',
                       ),
                       MenuItem(
-                        route: SRoutes.dashboard,
+                        route: SRoutes.accountWithdraw,
                         itemName: 'Money Withdraw History',
                       ),
                     ],
                   ),
                   const MenuItem(
-                    route: SRoutes.settings,
+                    parent: 'settings',
                     image: SImages.sideSettingIcon,
                     itemName: 'Settings',
                     children: [
                       MenuItem(
-                        route: SRoutes.dashboard,
+                        route: SRoutes.settingsStore,
                         itemName: 'Store Settings',
                       ),
                       MenuItem(
-                        route: SRoutes.dashboard,
+                        route: SRoutes.settingsShipping,
                         itemName: 'Shipping',
                       ),
                     ],
                   ),
                   const MenuItem(
+                    image: SImages.sideSettingIcon,
                     route: SRoutes.conversation,
                     itemName: 'Conversations',
                   ),
                   const MenuItem(
+                    image: SImages.sideSettingIcon,
                     route: SRoutes.supportTicket,
                     itemName: 'Support Ticket',
                   ),
