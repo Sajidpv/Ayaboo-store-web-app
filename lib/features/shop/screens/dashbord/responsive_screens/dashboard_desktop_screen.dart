@@ -20,7 +20,7 @@ class DashboardDesktopScreen extends StatelessWidget {
               const Row(
                 spacing: TSizes.spaceBtwItems,
                 children: [
-                  DashboardCounterSection(),
+                  Expanded(flex: 2, child: DashboardCounterSection()),
                   DashboardOrderSection(),
                 ],
               ),

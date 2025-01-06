@@ -10,51 +10,57 @@ class DashboardCounterSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      spacing: TSizes.spaceBtwItems,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          spacing: TSizes.defaultSpace,
-          children: [
-            DashboardCardComponent(
-              image: SImages.customerIcon,
-              title: 'Total Customers',
-              subtitle: '550',
-            ),
-            DashboardCardComponent(
-              image: SImages.ratingIcon,
-              title: 'Ratings',
-              subtitle: '550',
-            ),
-          ],
-        ),
-        Row(
-          spacing: TSizes.defaultSpace,
-          children: [
-            DashboardCardComponent(
-              image: SImages.productIcon,
-              title: 'Total Products',
-              subtitle: '550',
-            ),
-            DashboardCardComponent(
-              image: SImages.orderIcon,
-              title: 'Total Orders',
-              subtitle: '550',
-            ),
-          ],
-        ),
-        Row(
-          spacing: TSizes.defaultSpace,
-          children: [
-            DashboardCardComponent(
-              image: SImages.saleIcon,
-              title: 'Total Sales',
-              subtitle: '550',
-            ),
-          ],
-        )
-      ],
+    return ConstrainedBox(
+      constraints: const BoxConstraints(minHeight: 282),
+      child: const Column(
+        spacing: TSizes.spaceBtwItems,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            spacing: TSizes.spaceBtwItems,
+            children: [
+              Expanded(
+                child: DashboardCardComponent(
+                  image: SImages.customerIcon,
+                  title: 'Total Customers',
+                  subtitle: '550',
+                ),
+              ),
+              Expanded(
+                child: DashboardCardComponent(
+                  image: SImages.ratingIcon,
+                  title: 'Ratings',
+                  subtitle: '550',
+                ),
+              ),
+            ],
+          ),
+          Row(
+            spacing: TSizes.spaceBtwItems,
+            children: [
+              Expanded(
+                child: DashboardCardComponent(
+                  image: SImages.productIcon,
+                  title: 'Total Products',
+                  subtitle: '550',
+                ),
+              ),
+              Expanded(
+                child: DashboardCardComponent(
+                  image: SImages.orderIcon,
+                  title: 'Total Orders',
+                  subtitle: '550',
+                ),
+              ),
+            ],
+          ),
+          DashboardCardComponent(
+            image: SImages.saleIcon,
+            title: 'Total Sales',
+            subtitle: '550',
+          )
+        ],
+      ),
     );
   }
 }

@@ -36,7 +36,7 @@ class SSidebar extends StatelessWidget {
                 onTap: () => Get.offAllNamed(SRoutes.dashboard),
                 child: SvgPicture.asset(
                   SImages.lightAppLogo,
-                  width: 150,
+                  width: 120,
                   fit: BoxFit.cover,
                 ).showCursorOnHoverIfWeb,
               ),

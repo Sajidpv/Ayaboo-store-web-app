@@ -13,7 +13,7 @@ class SLoginTemplate extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: SizedBox(
-        width: 450,
+        width: 400,
         child: SingleChildScrollView(
           child: Container(
               padding: SSpacingStyle.defaultPadding,

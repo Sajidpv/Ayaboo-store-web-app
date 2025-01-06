@@ -21,53 +21,50 @@ class DashboardCardComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ConstrainedBox(
-      constraints: const BoxConstraints(minWidth: 300),
-      child: SContainerWidget(
-        onTap: () {
-          debugPrint('clicked on $title');
-        },
-        radius: 8,
-        showShadow: true,
-        elevation: 2,
-        padding: const EdgeInsets.symmetric(
-            horizontal: TSizes.xl, vertical: TSizes.lg - 5),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(title,
-                    style: Theme.of(context).textTheme.titleMedium!.apply(
-                        color: TColors.textSecondary,
-                        fontSizeFactor: SDeviceUtils.isDesktopScreen(context)
-                            ? context.width * .0005
-                            : SDeviceUtils.isTabletScreen(context)
-                                ? context.width * .0009
-                                : .9)),
-                Text(
-                  subtitle,
-                  style: Theme.of(context).textTheme.headlineMedium!.apply(
+    return SContainerWidget(
+      onTap: () {
+        debugPrint('clicked on $title');
+      },
+      radius: 8,
+      showShadow: true,
+      elevation: .5,
+      padding: const EdgeInsets.symmetric(
+          horizontal: TSizes.xl, vertical: TSizes.md - 2),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(title,
+                  style: Theme.of(context).textTheme.titleMedium!.apply(
+                      color: TColors.textSecondary,
                       fontSizeFactor: SDeviceUtils.isDesktopScreen(context)
-                          ? context.width * .0004
+                          ? context.width * TSizes.fontTitleSm
                           : SDeviceUtils.isTabletScreen(context)
-                              ? context.width * .0007
-                              : .6),
-                ),
-              ],
-            ),
-            SContainerWidget(
-              padding: const EdgeInsets.all(TSizes.sm + 2),
-              width: 45,
-              height: 45,
-              backgroundColor: TColors.primary.withValues(alpha: .7),
-              radius: 8,
-              child: Image.asset(image ?? ""),
-            ),
-          ],
-        ),
-      ).applyHoverEffectIfWeb.showCursorOnHoverIfWeb,
-    );
+                              ? context.width * TSizes.fontTitleMd
+                              : TSizes.fontTitleLg)),
+              Text(
+                subtitle,
+                style: Theme.of(context).textTheme.headlineMedium!.apply(
+                    fontSizeFactor: SDeviceUtils.isDesktopScreen(context)
+                        ? context.width * TSizes.fontSubTitleSm
+                        : SDeviceUtils.isTabletScreen(context)
+                            ? context.width * TSizes.fontSubTitleMd
+                            : TSizes.fontSubTitleLg),
+              ),
+            ],
+          ),
+          SContainerWidget(
+            padding: const EdgeInsets.all(TSizes.sm + 2),
+            width: 45,
+            height: 45,
+            backgroundColor: TColors.primary.withValues(alpha: .7),
+            radius: 8,
+            child: Image.asset(image ?? ""),
+          ),
+        ],
+      ),
+    ).applyHoverEffectIfWeb.showCursorOnHoverIfWeb;
   }
 }

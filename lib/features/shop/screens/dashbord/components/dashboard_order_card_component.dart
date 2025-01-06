@@ -26,7 +26,7 @@ class DashboardOrderCardComponent extends StatelessWidget {
         radius: 8,
         showShadow: true,
         showBorder: true,
-        elevation: 1,
+        elevation: .5,
         padding: const EdgeInsets.symmetric(
             horizontal: TSizes.lg, vertical: TSizes.sm),
         child: Row(
@@ -45,19 +45,19 @@ class DashboardOrderCardComponent extends StatelessWidget {
                     style: Theme.of(context).textTheme.titleMedium!.apply(
                         color: TColors.textSecondary,
                         fontSizeFactor: SDeviceUtils.isDesktopScreen(context)
-                            ? context.width * .0004
+                            ? context.width * TSizes.fontTitleSm
                             : SDeviceUtils.isTabletScreen(context)
-                                ? context.width * .0009
-                                : .9)),
+                                ? context.width * TSizes.fontTitleMd
+                                : TSizes.fontTitleLg)),
                 Text(
                   subtitle,
                   overflow: TextOverflow.ellipsis,
                   style: Theme.of(context).textTheme.headlineMedium!.apply(
                       fontSizeFactor: SDeviceUtils.isDesktopScreen(context)
-                          ? context.width * .0004
+                          ? context.width * TSizes.fontSubTitleSm
                           : SDeviceUtils.isTabletScreen(context)
-                              ? context.width * .0007
-                              : .6),
+                              ? context.width * TSizes.fontSubTitleMd
+                              : TSizes.fontSubTitleLg),
                 ),
               ],
             ),

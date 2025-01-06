@@ -10,7 +10,7 @@ class SSectionHeaderTemplate extends StatelessWidget {
     required this.title,
     required this.action,
     required this.child,
-    this.elevation = 1,
+    this.elevation = .5,
     this.color,
   });
   final String action;

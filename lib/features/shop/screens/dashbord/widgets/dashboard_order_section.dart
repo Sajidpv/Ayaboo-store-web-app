@@ -13,11 +13,13 @@ class DashboardOrderSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
+      flex: 3,
       child: SContainerWidget(
-          elevation: 1,
+          elevation: .5,
           radius: 8,
           padding: const EdgeInsets.symmetric(
-              horizontal: TSizes.lg, vertical: TSizes.lg),
+            horizontal: TSizes.md,
+          ),
           child: SSectionHeaderTemplate(
             elevation: 0,
             title: Text(
@@ -26,7 +28,7 @@ class DashboardOrderSection extends StatelessWidget {
             ),
             action: 'All Orders',
             child: const Column(
-              spacing: TSizes.spaceBtwSections,
+              spacing: TSizes.spaceBtwItems,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(

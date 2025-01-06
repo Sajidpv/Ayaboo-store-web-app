@@ -96,13 +96,16 @@ class MenuItem extends StatelessWidget {
                     : TSizes.xs,
                 horizontal: TSizes.md),
             child: image != null
-                ? Image.asset(image!)
+                ? Image.asset(
+                    image!,
+                    width: 15,
+                  )
                 : Icon(
                     icon,
                     color: isActive
                         ? TColors.primary
                         : TColors.grey.withValues(alpha: .6),
-                    size: 10,
+                    size: 15,
                   )),
         Flexible(
             child: Text(itemName,
