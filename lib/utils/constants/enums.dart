@@ -8,7 +8,7 @@ enum TextSizes { small, medium, large }
 
 enum ImageType { network, memory, asset, file, svg }
 
-enum OrderStatus { processing, shipped, delivered }
+enum OrderStatus { processing, cancelled, pending, shipped, delivered }
 
 enum PaymentMethods {
   paypal,

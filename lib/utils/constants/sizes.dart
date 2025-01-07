@@ -18,12 +18,12 @@ class TSizes {
   static const double fontSizeLg = 18.0;
 
   // Font size factors
-  static const double fontTitleMd = .0009;
-  static const double fontTitleSm = .0004;
-  static const double fontSubTitleMd = .0006;
-  static const double fontSubTitleSm = .00035;
-  static const double fontTitleLg = .9;
-  static const double fontSubTitleLg = .6;
+  static const double fontSizeFactorTitleMd = .0009;
+  static const double fontSizeFactorTitleSm = .0004;
+  static const double fontSizeFactorSubTitleMd = .0006;
+  static const double fontSizeFactorSubTitleSm = .00035;
+  static const double fontSizeFactorTitleLg = .9;
+  static const double fontSizeFactorSubTitleLg = .6;
 
   // Button sizes
   static const double buttonHeight = 18.0;

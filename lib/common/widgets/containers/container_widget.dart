@@ -4,7 +4,7 @@ import 'package:store/utils/constants/sizes.dart';
 
 class SContainerWidget extends StatelessWidget {
   final Widget? child;
-  final double radius;
+  final double? radius;
   final double? width, height, elevation;
   final bool showBorder, showShadow;
   final Color borderColor, backgroundColor;
@@ -15,7 +15,7 @@ class SContainerWidget extends StatelessWidget {
   const SContainerWidget({
     super.key,
     this.child,
-    required this.radius,
+    this.radius = TSizes.cardRadiusLg,
     this.width,
     this.height,
     this.showBorder = false,
@@ -33,7 +33,7 @@ class SContainerWidget extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Material(
-        borderRadius: BorderRadius.circular(radius),
+        borderRadius: BorderRadius.circular(radius!),
         elevation: elevation ?? 0,
         child: Container(
           margin: margin,
@@ -44,7 +44,7 @@ class SContainerWidget extends StatelessWidget {
               border: showBorder
                   ? Border.all(color: borderColor.withValues(alpha: .5))
                   : null,
-              borderRadius: BorderRadius.circular(radius),
+              borderRadius: BorderRadius.circular(radius!),
               color: backgroundColor,
               boxShadow: [
                 if (showShadow)

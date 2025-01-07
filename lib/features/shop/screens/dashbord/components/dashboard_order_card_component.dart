@@ -45,19 +45,19 @@ class DashboardOrderCardComponent extends StatelessWidget {
                     style: Theme.of(context).textTheme.titleMedium!.apply(
                         color: TColors.textSecondary,
                         fontSizeFactor: SDeviceUtils.isDesktopScreen(context)
-                            ? context.width * TSizes.fontTitleSm
+                            ? context.width * TSizes.fontSizeFactorTitleSm
                             : SDeviceUtils.isTabletScreen(context)
-                                ? context.width * TSizes.fontTitleMd
-                                : TSizes.fontTitleLg)),
+                                ? context.width * TSizes.fontSizeFactorTitleMd
+                                : TSizes.fontSizeFactorTitleLg)),
                 Text(
                   subtitle,
                   overflow: TextOverflow.ellipsis,
                   style: Theme.of(context).textTheme.headlineMedium!.apply(
                       fontSizeFactor: SDeviceUtils.isDesktopScreen(context)
-                          ? context.width * TSizes.fontSubTitleSm
+                          ? context.width * TSizes.fontSizeFactorSubTitleSm
                           : SDeviceUtils.isTabletScreen(context)
-                              ? context.width * TSizes.fontSubTitleMd
-                              : TSizes.fontSubTitleLg),
+                              ? context.width * TSizes.fontSizeFactorSubTitleMd
+                              : TSizes.fontSizeFactorSubTitleLg),
                 ),
               ],
             ),

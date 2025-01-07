@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:store/common/widgets/containers/container_widget.dart';
 import 'package:store/common/widgets/layouts/templates/section_title_template.dart';
+import 'package:store/features/shop/controller/dashboard/dashboard_controller.dart';
 import 'package:store/features/shop/screens/dashbord/widgets/dashboard_counter_section.dart';
 import 'package:store/features/shop/screens/dashbord/widgets/dashboard_order_section.dart';
+import 'package:store/features/shop/screens/dashbord/widgets/dashboard_order_status_piechart_widget.dart';
+import 'package:store/features/shop/screens/dashbord/widgets/dashboard_weekly_graph_widget.dart';
+import 'package:store/utils/constants/colors.dart';
 import 'package:store/utils/constants/sizes.dart';
+import 'package:store/utils/device/device_utility.dart';
 import 'package:store/utils/extensions/spacer_extension.dart';
+import 'package:fl_chart/fl_chart.dart';
 
 class DashboardDesktopScreen extends StatelessWidget {
   const DashboardDesktopScreen({super.key});
@@ -24,6 +32,30 @@ class DashboardDesktopScreen extends StatelessWidget {
                   DashboardOrderSection(),
                 ],
               ),
+              ///////////////GRAPHS////////
+              const Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                spacing: TSizes.spaceBtwItems,
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Column(
+                      spacing: TSizes.spaceBtwItems,
+                      children: [
+                        ///BarGRAPH
+                        DashboardWeeklyGraphWidget(),
+
+                        ///PRoDUCT STATUS
+                        SContainerWidget()
+                      ],
+                    ),
+                  ),
+
+                  ///////PIE
+                  Expanded(child: DashboardOrderStatusPiechartWidget())
+                ],
+              ),
+              //////CARDS/////////////////
               Row(
                 children: [
                   Flexible(
@@ -50,7 +82,7 @@ class DashboardDesktopScreen extends StatelessWidget {
                     ),
                   )
                 ],
-              )
+              ),
             ],
           ),
         ),
