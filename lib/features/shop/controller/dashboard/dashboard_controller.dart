@@ -32,8 +32,15 @@ class DashboardController extends GetxController {
       deliveryDate: DateTime.now().add(const Duration(days: 5)),
     ),
     OrderModel(
+      id: 'CWT0150',
+      status: OrderStatus.pending,
+      totalAmount: 224,
+      orderDate: DateTime.now().add(const Duration(days: 3)),
+      deliveryDate: DateTime.now().add(const Duration(days: 5)),
+    ),
+    OrderModel(
       id: 'CWT0265',
-      status: OrderStatus.delivered,
+      status: OrderStatus.pending,
       totalAmount: 355,
       orderDate: DateTime.now(),
       deliveryDate: DateTime.now().add(const Duration(days: 6)),
@@ -41,6 +48,20 @@ class DashboardController extends GetxController {
     OrderModel(
       id: 'CWT1536',
       status: OrderStatus.delivered,
+      totalAmount: 115,
+      orderDate: DateTime.now().subtract(const Duration(days: 1)),
+      deliveryDate: DateTime.now().add(const Duration(days: 2)),
+    ),
+    OrderModel(
+      id: 'CWT1530',
+      status: OrderStatus.delivered,
+      totalAmount: 215,
+      orderDate: DateTime.now().subtract(const Duration(days: 3)),
+      deliveryDate: DateTime.now().add(const Duration(days: 2)),
+    ),
+    OrderModel(
+      id: 'CWT1537',
+      status: OrderStatus.cancelled,
       totalAmount: 115,
       orderDate: DateTime.now().subtract(const Duration(days: 1)),
       deliveryDate: DateTime.now().add(const Duration(days: 2)),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:store/common/widgets/layouts/sidebar/sidebar_controller.dart';
+import 'package:store/common/widgets/layouts/sidebar/controller/sidebar_controller.dart';
 import 'package:store/routes/routes.dart';
 
 class RouteObserver extends GetObserver {

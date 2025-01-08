@@ -13,12 +13,12 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      builder: (context, child) {
-        ErrorWidget.builder = (FlutterErrorDetails errorDetails) {
-          return CustomErrorWidget(errorDetails: errorDetails);
-        };
-        return child ?? const SizedBox.shrink();
-      },
+      // builder: (context, child) {
+      //   ErrorWidget.builder = (FlutterErrorDetails errorDetails) {
+      //     return CustomErrorWidget(errorDetails: errorDetails);
+      //   };
+      //   return child ?? const SizedBox.shrink();
+      // },
       title: STexts.appName,
       themeMode: ThemeMode.light,
       navigatorObservers: [RouteObserver()],

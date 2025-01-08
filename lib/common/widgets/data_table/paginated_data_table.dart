@@ -14,7 +14,8 @@ class SPaginatedDataTable extends StatelessWidget {
       this.rowsPerPage = 10,
       required this.source,
       required this.columns,
-      this.onPageChanged});
+      this.onPageChanged,
+      this.tableHeight = 760});
 
   final bool sortAscending;
   final double minWidth, dataRowHeight;
@@ -23,10 +24,12 @@ class SPaginatedDataTable extends StatelessWidget {
   final DataTableSource source;
   final List<DataColumn> columns;
   final Function(int)? onPageChanged;
+  final double tableHeight;
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return SizedBox(
+      height: tableHeight,
       child: Theme(
         data: Theme.of(context).copyWith(
             cardTheme: const CardTheme(
@@ -43,7 +46,8 @@ class SPaginatedDataTable extends StatelessWidget {
           dataRowHeight: dataRowHeight,
           ///////pagination
           rowsPerPage: rowsPerPage,
-          showFirstLastButtons: true, showCheckboxColumn: true,
+          showFirstLastButtons: true,
+          showCheckboxColumn: true,
           onPageChanged: onPageChanged, //action while change a page
           renderEmptyRowsInTheEnd: false, ////remove emty checkbox at last page
           // onRowsPerPageChanged: (noOfRows) {}, for fetchingdata as pagination

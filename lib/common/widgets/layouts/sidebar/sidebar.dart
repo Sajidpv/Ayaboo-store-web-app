@@ -198,6 +198,10 @@ class SSidebar extends StatelessWidget {
                     itemName: 'Settings',
                     children: [
                       MenuItem(
+                        route: SRoutes.settingsMedia,
+                        itemName: 'Media',
+                      ),
+                      MenuItem(
                         route: SRoutes.settingsStore,
                         itemName: 'Store Settings',
                       ),

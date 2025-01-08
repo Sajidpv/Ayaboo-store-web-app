@@ -3,7 +3,7 @@ import 'package:store/routes/routes.dart';
 import 'package:store/utils/device/device_utility.dart';
 
 class SidebarController extends GetxController {
-  final activeItem = ''.obs;
+  final activeItem = SRoutes.dashboard.obs;
   final hoveredItem = ''.obs;
 
   @override

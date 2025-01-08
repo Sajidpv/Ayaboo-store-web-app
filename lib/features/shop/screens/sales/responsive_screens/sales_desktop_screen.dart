@@ -35,7 +35,7 @@ class SalesDesktopScreen extends StatelessWidget {
                     dataRowHeight: 56,
                     ///////pagination
                     rowsPerPage: 13,
-                    onPageChanged: (value) {}, //action while change a pag
+                    onPageChanged: (value) {},
 
                     /////////SORTING///////////
                     sortAscending: controller.sortAsce.value,

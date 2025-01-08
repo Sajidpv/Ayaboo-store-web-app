@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:store/common/widgets/containers/container_widget.dart';
 import 'package:store/features/shop/screens/dashbord/components/dashboard_card_component.dart';
 import 'package:store/features/shop/screens/dashbord/components/dashboard_order_card_component.dart';
+import 'package:store/features/shop/screens/dashbord/components/dashboard_recent_orders.dart';
 import 'package:store/features/shop/screens/dashbord/widgets/dashboard_order_status_piechart_widget.dart';
 import 'package:store/features/shop/screens/dashbord/widgets/dashboard_weekly_graph_widget.dart';
 import 'package:store/utils/constants/colors.dart';
@@ -78,7 +79,7 @@ class DashbordTabletScreen extends StatelessWidget {
                 ],
               ),
               SContainerWidget(
-                elevation: 1,
+                elevation: .2,
                 radius: 8,
                 padding: const EdgeInsets.symmetric(
                     horizontal: TSizes.lg, vertical: TSizes.lg),
@@ -166,6 +167,9 @@ class DashbordTabletScreen extends StatelessWidget {
                 ),
               ),
               const DashboardWeeklyGraphWidget(),
+
+              ///Recent orders
+              const DashboardRecentOrder(),
               const DashboardOrderStatusPiechartWidget()
             ],
           ),

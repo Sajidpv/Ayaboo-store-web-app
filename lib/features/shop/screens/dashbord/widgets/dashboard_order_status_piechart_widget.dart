@@ -15,6 +15,7 @@ class DashboardOrderStatusPiechartWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.find<DashboardController>();
     return SContainerWidget(
+      elevation: .2,
       padding: const EdgeInsets.all(TSizes.lg),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -25,7 +26,7 @@ class DashboardOrderStatusPiechartWidget extends StatelessWidget {
             style: Theme.of(context).textTheme.headlineSmall,
           ),
           SizedBox(
-            height: 400,
+            height: 300,
             child: PieChart(
               PieChartData(
                   sections: controller.orderStatusData.entries.map(

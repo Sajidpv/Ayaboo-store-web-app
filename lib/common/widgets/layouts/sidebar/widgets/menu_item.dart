@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:store/common/widgets/layouts/sidebar/sidebar_controller.dart';
+import 'package:store/common/widgets/layouts/sidebar/controller/sidebar_controller.dart';
 import 'package:store/utils/constants/colors.dart';
 import 'package:store/utils/constants/sizes.dart';
 import 'package:store/utils/extensions/hover_extension.dart';

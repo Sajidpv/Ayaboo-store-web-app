@@ -3,6 +3,9 @@ import 'package:get/get.dart';
 import 'package:store/common/widgets/containers/container_widget.dart';
 import 'package:store/features/shop/screens/dashbord/components/dashboard_card_component.dart';
 import 'package:store/features/shop/screens/dashbord/components/dashboard_order_card_component.dart';
+import 'package:store/features/shop/screens/dashbord/components/dashboard_recent_orders.dart';
+import 'package:store/features/shop/screens/dashbord/widgets/dashboard_order_status_piechart_widget.dart';
+import 'package:store/features/shop/screens/dashbord/widgets/dashboard_weekly_graph_widget.dart';
 import 'package:store/utils/constants/colors.dart';
 import 'package:store/utils/constants/image_strings.dart';
 import 'package:store/utils/constants/sizes.dart';
@@ -118,7 +121,12 @@ class DashbordMobileScreen extends StatelessWidget {
                     )
                   ],
                 ),
-              )
+              ),
+              const DashboardWeeklyGraphWidget(),
+
+              ///Recent orders
+              const DashboardRecentOrder(),
+              const DashboardOrderStatusPiechartWidget()
             ],
           ),
         ),

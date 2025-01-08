@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:store/common/widgets/containers/container_widget.dart';
 import 'package:store/common/widgets/layouts/templates/section_title_template.dart';
 import 'package:store/features/shop/controller/dashboard/dashboard_controller.dart';
+import 'package:store/features/shop/screens/dashbord/components/dashboard_recent_orders.dart';
+import 'package:store/features/shop/screens/dashbord/tables/dashboard_order_table_widget.dart';
 import 'package:store/features/shop/screens/dashbord/widgets/dashboard_counter_section.dart';
 import 'package:store/features/shop/screens/dashbord/widgets/dashboard_order_section.dart';
 import 'package:store/features/shop/screens/dashbord/widgets/dashboard_order_status_piechart_widget.dart';
@@ -45,8 +47,8 @@ class DashboardDesktopScreen extends StatelessWidget {
                         ///BarGRAPH
                         DashboardWeeklyGraphWidget(),
 
-                        ///PRoDUCT STATUS
-                        SContainerWidget()
+                        ///Recent orders
+                        DashboardRecentOrder()
                       ],
                     ),
                   ),

@@ -3,6 +3,7 @@ import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:store/app.dart';
 import 'package:store/common/widgets/layouts/templates/site_layout.dart';
 import 'package:store/features/auth/screens/login_screen.dart';
+import 'package:store/features/media/screens/media_screen.dart';
 import 'package:store/features/shop/screens/dashbord/dashbord_screen.dart';
 import 'package:store/features/shop/screens/sales/sales_screen.dart';
 import 'package:store/routes/route_middleware.dart';
@@ -126,6 +127,11 @@ class SAppRoutes {
       name: SRoutes.accountWithdraw,
       middlewares: [TRouteMiddleware()],
       page: () => const SSiteLayout(),
+    ),
+    GetPage(
+      name: SRoutes.settingsMedia,
+      middlewares: [TRouteMiddleware()],
+      page: () => const MediaScreen(),
     ),
     GetPage(
       name: SRoutes.settingsShipping,

@@ -32,6 +32,7 @@ class SRoutes {
   static const String accountCommission = '/accounts/commission';
   static const String accountWithdraw = '/accounts/withdraw';
   static const String accountPayment = '/accounts/payments';
+  static const String settingsMedia = '/settings/media';
   static const String settingsStore = '/settings/store';
   static const String settingsShipping = '/settings/shipping';
   static const String conversation = '/conversations';

@@ -14,6 +14,7 @@ class DashboardWeeklyGraphWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(DashboardController());
     return SContainerWidget(
+      elevation: .2,
       padding: const EdgeInsets.all(TSizes.lg),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
