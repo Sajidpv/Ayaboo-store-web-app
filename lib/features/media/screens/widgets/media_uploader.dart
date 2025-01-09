@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
 import 'package:get/get.dart';
 import 'package:store/common/widgets/containers/container_widget.dart';
+import 'package:store/common/widgets/images/s_rounded_image.dart';
 import 'package:store/features/media/controller/media_controller.dart';
-import 'package:store/features/media/controller/show_selected_imgs_component.dart';
 import 'package:store/features/media/model/media_model.dart';
 import 'package:store/features/media/screens/widgets/folder_dropdown.dart';
 import 'package:store/utils/constants/colors.dart';
@@ -137,7 +137,20 @@ class MediaUploader extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              const BuildSelectedImgShowSection(),
+                              Obx(
+                                () => Wrap(
+                                    alignment: WrapAlignment.start,
+                                    spacing: TSizes.spaceBtwItems / 2,
+                                    runSpacing: TSizes.spaceBtwItems / 2,
+                                    children: controller.selectedImagesToUpload
+                                        .where((image) =>
+                                            image.localImageToDisplay != null)
+                                        .map(
+                                          (element) =>
+                                              _buildSimpleImageList(element),
+                                        )
+                                        .toList()),
+                              ),
                               SDeviceUtils.isMobileScreen(context)
                                   ? _BuildUploadButton()
                                   : const SizedBox.shrink()
@@ -149,6 +162,18 @@ class MediaUploader extends StatelessWidget {
               ],
             )
           : const SizedBox.shrink(),
+    );
+  }
+
+  Widget _buildSimpleImageList(ImageModel element) {
+    return SRoundedImage(
+      width: 90,
+      height: 90,
+      padding: TSizes.sm,
+      imageType: ImageType.asset,
+      memoryImage: element.localImageToDisplay,
+      margin: TSizes.spaceBtwItems / 2,
+      backgroundColor: TColors.primaryBackground,
     );
   }
 }

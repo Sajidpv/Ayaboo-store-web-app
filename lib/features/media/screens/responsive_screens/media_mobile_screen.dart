@@ -10,20 +10,20 @@ class MediaMobileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(TSizes.defaultSpace),
+          padding: const EdgeInsets.all(TSizes.defaultSpace),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             spacing: TSizes.spaceBtwSections,
             children: [
-              SBreadcrumbsWithHeading(
+              const SBreadcrumbsWithHeading(
                 heading: 'Media',
                 breadcrumbItems: ['Media Screen'],
               ),
-              BuildUploadImgButtonToggle(),
-              MediaUploader(),
+              const BuildUploadImgButtonToggle(),
+              const MediaUploader(),
               MediaContentSection(),
             ],
           ),

@@ -36,9 +36,9 @@ class SSiteLayout extends StatelessWidget {
             : tablet ?? desktop ?? const SizedBox(),
         mobile: useLayout
             ? MobileScreen(
-                body: mobile ?? desktop,
+                body: mobile ?? tablet ?? desktop,
               )
-            : mobile ?? desktop ?? const SizedBox(),
+            : mobile ?? tablet ?? desktop ?? const SizedBox(),
       ),
     );
   }

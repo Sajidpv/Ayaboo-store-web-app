@@ -61,15 +61,20 @@ class SSidebar extends StatelessWidget {
                   ),
                 ),
               ),
-              Column(
+              const Column(
                 spacing: TSizes.md,
                 children: [
-                  const MenuItem(
+                  MenuItem(
                     route: SRoutes.dashboard,
                     image: SImages.sidDashboardIcon,
                     itemName: 'Dashboard',
                   ),
-                  const MenuItem(
+                  MenuItem(
+                    route: SRoutes.brands,
+                    image: SImages.sidDashboardIcon,
+                    itemName: 'Brands',
+                  ),
+                  MenuItem(
                     parent: 'products',
                     image: SImages.sideProductICon,
                     itemName: 'Products',
@@ -84,7 +89,7 @@ class SSidebar extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const MenuItem(
+                  MenuItem(
                     parent: 'sales',
                     image: SImages.sideSaleIcon,
                     itemName: 'Sales',
@@ -95,19 +100,17 @@ class SSidebar extends StatelessWidget {
                       ),
                     ],
                   ),
-                  1.height,
-                  const MenuItem(
+                  MenuItem(
                     route: SRoutes.customerRefund,
                     image: SImages.sideRefundIcon,
                     itemName: 'Customer Refunds',
                   ),
-                  1.height,
-                  const MenuItem(
+                  MenuItem(
                     route: SRoutes.n404,
                     image: SImages.sideCustICon,
                     itemName: 'Customers',
                   ),
-                  const MenuItem(
+                  MenuItem(
                     parent: 'stock',
                     image: SImages.sideStockICon,
                     itemName: 'Stock Management',
@@ -123,7 +126,7 @@ class SSidebar extends StatelessWidget {
                       MenuItem(route: SRoutes.stockReturns, itemName: 'Returns')
                     ],
                   ),
-                  const MenuItem(
+                  MenuItem(
                     parent: 'seller',
                     image: SImages.sideSellerIcon,
                     itemName: 'Seller Management',
@@ -146,7 +149,7 @@ class SSidebar extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const MenuItem(
+                  MenuItem(
                     parent: 'reports',
                     image: SImages.sideReportIcon,
                     itemName: 'Reports',
@@ -169,7 +172,7 @@ class SSidebar extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const MenuItem(
+                  MenuItem(
                     parent: 'accounts',
                     image: SImages.sideAccountIcon,
                     itemName: 'Accounts',
@@ -192,7 +195,7 @@ class SSidebar extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const MenuItem(
+                  MenuItem(
                     parent: 'settings',
                     image: SImages.sideSettingIcon,
                     itemName: 'Settings',
@@ -211,12 +214,12 @@ class SSidebar extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const MenuItem(
+                  MenuItem(
                     image: SImages.sideSettingIcon,
                     route: SRoutes.conversation,
                     itemName: 'Conversations',
                   ),
-                  const MenuItem(
+                  MenuItem(
                     image: SImages.sideSettingIcon,
                     route: SRoutes.supportTicket,
                     itemName: 'Support Ticket',

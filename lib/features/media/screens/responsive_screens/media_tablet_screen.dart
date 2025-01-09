@@ -10,15 +10,15 @@ class MediaTabletScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(TSizes.defaultSpace),
+          padding: const EdgeInsets.all(TSizes.defaultSpace),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             spacing: TSizes.spaceBtwSections,
             children: [
-              Row(
+              const Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -29,7 +29,7 @@ class MediaTabletScreen extends StatelessWidget {
                   BuildUploadImgButtonToggle(),
                 ],
               ),
-              MediaUploader(),
+              const MediaUploader(),
               MediaContentSection(),
             ],
           ),

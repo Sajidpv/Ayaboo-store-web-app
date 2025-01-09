@@ -4,6 +4,7 @@ import 'package:store/app.dart';
 import 'package:store/common/widgets/layouts/templates/site_layout.dart';
 import 'package:store/features/auth/screens/login_screen.dart';
 import 'package:store/features/media/screens/media_screen.dart';
+import 'package:store/features/shop/screens/brands/brand_screen.dart';
 import 'package:store/features/shop/screens/dashbord/dashbord_screen.dart';
 import 'package:store/features/shop/screens/sales/sales_screen.dart';
 import 'package:store/routes/route_middleware.dart';
@@ -27,6 +28,11 @@ class SAppRoutes {
       name: SRoutes.dashboard,
       middlewares: [TRouteMiddleware()],
       page: () => const DashbordScreen(),
+    ),
+    GetPage(
+      name: SRoutes.brands,
+      middlewares: [TRouteMiddleware()],
+      page: () => const BrandScreen(),
     ),
     GetPage(
       name: SRoutes.product,

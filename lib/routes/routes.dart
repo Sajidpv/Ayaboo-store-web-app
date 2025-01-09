@@ -6,14 +6,16 @@ class SRoutes {
   static const String forgetPassword = '/forget-password';
   static const String resetPassword = '/reset-password';
 
-  static const String category = '/category';
-  static const String brands = '/brands';
-  static const String createProduct = '/createProduct';
-  static const String createBrand = '/createBrand';
+  static const String createBrand = '/create-brand';
+  static const String editBrand = '/edit-brand';
+  static const String deleteBrand = '/delete-brand';
   /////////Side nav items
   static const String dashboard = '/dashboard';
+  static const String brands = '/brands';
+
   static const String product = '/products';
   static const String productReview = '/products/review';
+  static const String createProduct = '/products/create-product';
   static const String sales = '/sales/orders';
   static const String customerRefund = '/customer-refunds';
   static const String customers = '/customers';
@@ -39,6 +41,9 @@ class SRoutes {
   static const String supportTicket = '/support-ticket';
 
   static List sideBarMenuItems = [
+    brands,
+    createBrand,
+    createProduct,
     dashboard,
     product,
     productReview,
@@ -67,6 +72,9 @@ class SRoutes {
   ];
   static List allRoutes = [
     dashboard,
+    brands,
+    createBrand,
+    createProduct,
     product,
     productReview,
     sales,
@@ -95,7 +103,6 @@ class SRoutes {
     login,
     forgetPassword,
     resetPassword,
-    category,
     brands,
     createProduct,
     createBrand,

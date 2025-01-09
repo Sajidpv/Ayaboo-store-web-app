@@ -26,9 +26,19 @@ class MenuItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final menuController = Get.put(SidebarController());
     final isExpandable = children != null && children!.isNotEmpty;
-    return isExpandable
-        ? _buildExpansionTile(menuController, context)
-        : _buildMenu(menuController: menuController, context: context);
+    return InkWell(
+      onTap: () => menuController.onMenuTaped(route ?? ''),
+      onHover: (hovering) => hovering
+          ? menuController.changeHoveredItem(route ?? '')
+          : menuController.changeHoveredItem(''),
+      child: isExpandable
+          ? _buildExpansionTile(menuController, context)
+          : Padding(
+              padding: const EdgeInsets.symmetric(vertical: TSizes.sm),
+              child:
+                  _buildMenu(menuController: menuController, context: context),
+            ),
+    );
   }
 
 // Widget for expandable menu item
@@ -65,22 +75,16 @@ class MenuItem extends StatelessWidget {
   Widget _buildMenu(
       {required SidebarController menuController,
       required BuildContext context}) {
-    return InkWell(
-      onTap: () => menuController.onMenuTaped(route ?? ''),
-      onHover: (hovering) => hovering
-          ? menuController.changeHoveredItem(route ?? '')
-          : menuController.changeHoveredItem(''),
-      child: Obx(
-        () => Container(
-          decoration: BoxDecoration(
-              color: menuController.isActive(route ?? '')
-                  ? TColors.black
-                  : Colors.transparent,
-              borderRadius: BorderRadius.circular(TSizes.cardRadiusSm)),
-          child: _buildMenuTitle(
-              menuController, context, menuController.isActive(route ?? '')),
-        ).showCursorOnHoverIfWeb.applyHoverEffectIfWeb,
-      ),
+    return Obx(
+      () => Container(
+        decoration: BoxDecoration(
+            color: menuController.isActive(route ?? '')
+                ? TColors.black
+                : Colors.transparent,
+            borderRadius: BorderRadius.circular(TSizes.cardRadiusSm)),
+        child: _buildMenuTitle(
+            menuController, context, menuController.isActive(route ?? '')),
+      ).showCursorOnHoverIfWeb.applyHoverEffectIfWeb,
     );
   }
 

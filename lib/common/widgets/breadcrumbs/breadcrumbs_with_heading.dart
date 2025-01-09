@@ -8,10 +8,10 @@ import 'package:store/utils/constants/sizes.dart';
 class SBreadcrumbsWithHeading extends StatelessWidget {
   const SBreadcrumbsWithHeading(
       {super.key,
-      required this.heading,
+      this.heading,
       required this.breadcrumbItems,
       this.returnToPreviousScreen = false});
-  final String heading;
+  final String? heading;
   final List<String> breadcrumbItems;
   final bool returnToPreviousScreen;
   @override
@@ -57,16 +57,17 @@ class SBreadcrumbsWithHeading extends StatelessWidget {
               ),
           ],
         ),
-        Row(
-          spacing: returnToPreviousScreen ? TSizes.spaceBtwItems : 0,
-          children: [
-            if (returnToPreviousScreen)
-              IconButton(
-                  onPressed: () => Get.back(),
-                  icon: const Icon(Icons.arrow_back)),
-            SPageHeading(heading: heading)
-          ],
-        )
+        if (returnToPreviousScreen || heading != null)
+          Row(
+            spacing: returnToPreviousScreen ? TSizes.spaceBtwItems : 0,
+            children: [
+              if (returnToPreviousScreen)
+                IconButton(
+                    onPressed: () => Get.back(),
+                    icon: const Icon(Icons.arrow_back)),
+              if (heading != null) SPageHeading(heading: heading!)
+            ],
+          )
       ],
     );
   }

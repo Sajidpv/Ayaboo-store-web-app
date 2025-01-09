@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:store/common/widgets/data_table/paginated_data_table.dart';
-import 'package:store/features/shop/controller/sales_controller.dart';
+import 'package:store/features/shop/controller/sales/sales_controller.dart';
 import 'package:store/utils/constants/sizes.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:store/utils/extensions/spacer_extension.dart';
