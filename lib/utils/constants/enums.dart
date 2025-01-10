@@ -8,7 +8,15 @@ enum TextSizes { small, medium, large }
 
 enum ImageType { network, memory, asset, file, svg }
 
-enum OrderStatus { processing, cancelled, pending, shipped, delivered }
+enum DefaultStatus {
+  processing,
+  cancelled,
+  pending,
+  shipped,
+  delivered,
+  approved,
+  rejected
+}
 
 enum MediaCategory { folders, banners, brands, categories, users, products }
 

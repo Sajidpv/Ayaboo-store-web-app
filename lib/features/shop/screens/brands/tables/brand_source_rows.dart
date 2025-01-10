@@ -3,15 +3,29 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:store/common/widgets/data_table/table_action_buttons.dart';
 import 'package:store/common/widgets/images/s_rounded_image.dart';
+import 'package:store/common/widgets/toggles/toggle_switch.dart';
+import 'package:store/features/shop/controller/brand/brand_controller.dart';
 import 'package:store/utils/constants/colors.dart';
 import 'package:store/utils/constants/enums.dart';
 import 'package:store/utils/constants/image_strings.dart';
 import 'package:store/utils/constants/sizes.dart';
+import 'package:store/utils/helpers/helper_functions.dart';
 
 class BrandSourceRows extends DataTableSource {
   @override
   DataRow? getRow(int index) {
-    DataRow2(cells: [
+    final controller = Get.put(BrandController());
+    return DataRow2(cells: [
+      DataCell(Text(
+        (index + 1).toString(),
+        overflow: TextOverflow.ellipsis,
+      )),
+      DataCell(Text('Uracca',
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+          style: Theme.of(Get.context!).textTheme.bodyLarge!.apply(
+                color: TColors.primary,
+              ))),
       const DataCell(SRoundedImage(
         imageType: ImageType.asset,
         width: 50,
@@ -21,14 +35,8 @@ class BrandSourceRows extends DataTableSource {
         borderRadius: TSizes.borderRadiusMd,
         backgroundColor: TColors.primaryBackground,
       )),
-      DataCell(Text('Uracca',
-          maxLines: 2,
-          overflow: TextOverflow.ellipsis,
-          style: Theme.of(Get.context!).textTheme.bodyLarge!.apply(
-                color: TColors.primary,
-              ))),
       const DataCell(Text(
-        'HIELTD PVT LTD',
+        'TM123234',
         maxLines: 2,
         overflow: TextOverflow.ellipsis,
       )),
@@ -37,27 +45,42 @@ class BrandSourceRows extends DataTableSource {
         maxLines: 2,
         overflow: TextOverflow.ellipsis,
       )),
-      const DataCell(Text(
-        'False',
+      DataCell(
+        Obx(
+          () => ToggleSwitchWidget(
+            value: controller.toggleFeaturedBrand.value,
+            onChanged: controller.toggleFeaturedButton,
+            color: TColors.success,
+          ),
+        ),
+      ),
+      DataCell(
+        Obx(
+          () => ToggleSwitchWidget(
+            value: controller.togglePublishedBrand.value,
+            onChanged: controller.togglePublishButton,
+            color: TColors.success,
+          ),
+        ),
+      ),
+      DataCell(Text(
+        SHelperFunctions.getFormattedDate(DateTime.now()),
         maxLines: 2,
         overflow: TextOverflow.ellipsis,
       )),
-      const DataCell(Text(
-        'True',
+      DataCell(Text(
+        DefaultStatus.pending.toString().split('.')[1],
         maxLines: 2,
+        style: Theme.of(Get.context!).textTheme.bodyLarge!.apply(
+              color:
+                  SHelperFunctions.getDefaultStatusColor(DefaultStatus.pending),
+            ),
         overflow: TextOverflow.ellipsis,
       )),
-      const DataCell(Text(
-        '28-10-94',
-        maxLines: 2,
-        overflow: TextOverflow.ellipsis,
+      const DataCell(STableActionButtons(
+        edit: true,
+        delete: true,
       )),
-      const DataCell(Text(
-        'Pending',
-        maxLines: 2,
-        overflow: TextOverflow.ellipsis,
-      )),
-      const DataCell(STableActionButtons()),
     ]);
   }
 

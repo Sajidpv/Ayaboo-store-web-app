@@ -10,9 +10,11 @@ class SBreadcrumbsWithHeading extends StatelessWidget {
       {super.key,
       this.heading,
       required this.breadcrumbItems,
-      this.returnToPreviousScreen = false});
+      this.returnToPreviousScreen = false,
+      this.style});
   final String? heading;
   final List<String> breadcrumbItems;
+  final TextStyle? style;
   final bool returnToPreviousScreen;
   @override
   Widget build(BuildContext context) {
@@ -65,7 +67,7 @@ class SBreadcrumbsWithHeading extends StatelessWidget {
                 IconButton(
                     onPressed: () => Get.back(),
                     icon: const Icon(Icons.arrow_back)),
-              if (heading != null) SPageHeading(heading: heading!)
+              if (heading != null) SPageHeading(heading: heading!, style: style)
             ],
           )
       ],

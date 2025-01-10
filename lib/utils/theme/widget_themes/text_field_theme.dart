@@ -10,8 +10,9 @@ class TTextFormFieldTheme {
     prefixIconColor: TColors.darkGrey,
     suffixIconColor: TColors.darkGrey,
     // constraints: const BoxConstraints.expand(height: TSizes.inputFieldHeight),
-    labelStyle: const TextStyle()
-        .copyWith(fontSize: TSizes.fontSizeMd, color: TColors.black),
+    labelStyle: const TextStyle().copyWith(
+        fontSize: TSizes.fontSizeMd,
+        color: TColors.textSecondary.withValues(alpha: .8)),
     hintStyle: const TextStyle()
         .copyWith(fontSize: TSizes.fontSizeSm, color: TColors.darkGrey),
     errorStyle: const TextStyle().copyWith(fontStyle: FontStyle.normal),

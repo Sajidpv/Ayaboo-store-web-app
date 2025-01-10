@@ -5,17 +5,19 @@ import 'package:store/utils/constants/sizes.dart';
 import 'package:store/utils/loaders/animation_loader.dart';
 
 class SPaginatedDataTable extends StatelessWidget {
-  const SPaginatedDataTable(
-      {super.key,
-      this.sortAscending = true,
-      this.minWidth = 1000,
-      this.dataRowHeight = TSizes.xl * 2,
-      this.sortColumnIndex,
-      this.rowsPerPage = 10,
-      required this.source,
-      required this.columns,
-      this.onPageChanged,
-      this.tableHeight = 760});
+  const SPaginatedDataTable({
+    super.key,
+    this.sortAscending = true,
+    this.minWidth = 1000,
+    this.dataRowHeight = TSizes.xl * 2,
+    this.sortColumnIndex,
+    this.rowsPerPage = 10,
+    required this.source,
+    required this.columns,
+    this.onPageChanged,
+    this.tableHeight = 760,
+    this.headerColor = TColors.borderSecondary,
+  });
 
   final bool sortAscending;
   final double minWidth, dataRowHeight;
@@ -25,6 +27,7 @@ class SPaginatedDataTable extends StatelessWidget {
   final List<DataColumn> columns;
   final Function(int)? onPageChanged;
   final double tableHeight;
+  final Color? headerColor;
 
   @override
   Widget build(BuildContext context) {
@@ -70,9 +73,12 @@ class SPaginatedDataTable extends StatelessWidget {
               );
             }
           },
-          headingTextStyle: Theme.of(context).textTheme.titleMedium,
+          headingTextStyle: Theme.of(context)
+              .textTheme
+              .titleSmall!
+              .copyWith(fontWeight: FontWeight.bold),
           headingRowColor: WidgetStateProperty.resolveWith(
-              (states) => TColors.primaryBackground),
+              (states) => headerColor!.withValues(alpha: .3)),
           headingRowDecoration: const BoxDecoration(
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(TSizes.borderRadiusMd),

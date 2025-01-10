@@ -30,12 +30,12 @@ class OrderRow extends DataTableSource {
           radius: TSizes.cardRadiusSm,
           padding: const EdgeInsets.symmetric(
               vertical: TSizes.xs, horizontal: TSizes.md),
-          backgroundColor: SHelperFunctions.getOrderStatusColor(order.status)
+          backgroundColor: SHelperFunctions.getDefaultStatusColor(order.status)
               .withValues(alpha: .1),
           child: Text(
             order.status.name.capitalize.toString(),
             style: TextStyle(
-                color: SHelperFunctions.getOrderStatusColor(order.status)),
+                color: SHelperFunctions.getDefaultStatusColor(order.status)),
           ),
         ),
       ),

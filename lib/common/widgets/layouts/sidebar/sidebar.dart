@@ -70,15 +70,14 @@ class SSidebar extends StatelessWidget {
                     itemName: 'Dashboard',
                   ),
                   MenuItem(
-                    route: SRoutes.brands,
-                    image: SImages.sidDashboardIcon,
-                    itemName: 'Brands',
-                  ),
-                  MenuItem(
                     parent: 'products',
                     image: SImages.sideProductICon,
                     itemName: 'Products',
                     children: [
+                      MenuItem(
+                        route: SRoutes.brands,
+                        itemName: 'Brands',
+                      ),
                       MenuItem(
                         route: SRoutes.product,
                         itemName: 'All Products',

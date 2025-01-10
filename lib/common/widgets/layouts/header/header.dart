@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:store/common/widgets/images/s_rounded_image.dart';
+import 'package:store/common/widgets/inputs/search_box.dart';
 import 'package:store/common/widgets/shimmers/shimmer.dart';
 import 'package:store/features/auth/controllers/login_controller.dart';
 import 'package:store/features/auth/controllers/user_controller.dart';
@@ -35,16 +36,7 @@ class SHeader extends StatelessWidget implements PreferredSizeWidget {
             : null,
         automaticallyImplyLeading: false,
         ///////Search bar
-        title: SDeviceUtils.isDesktopScreen(context)
-            ? SizedBox(
-                width: 400,
-                child: TextFormField(
-                  decoration: const InputDecoration(
-                      prefixIcon: Icon(Icons.search),
-                      hintText: 'Search anything...'),
-                ),
-              )
-            : null,
+        title: SDeviceUtils.isDesktopScreen(context) ? const SearchBox() : null,
 
         /////Actions
         actions: [

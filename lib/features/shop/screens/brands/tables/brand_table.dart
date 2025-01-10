@@ -1,9 +1,7 @@
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:store/common/widgets/data_table/paginated_data_table.dart';
 import 'package:store/features/shop/screens/brands/tables/brand_source_rows.dart';
-import 'package:store/utils/device/device_utility.dart';
 
 class BrandTable extends StatelessWidget {
   const BrandTable({super.key});
@@ -11,37 +9,35 @@ class BrandTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SPaginatedDataTable(
-      minWidth: 700,
-      tableHeight: 760,
+      tableHeight: 640,
       dataRowHeight: 64,
-      columns: [
+      columns: const [
+        DataColumn2(label: Text('#'), fixedWidth: 40),
         DataColumn2(
-            label: const Text('Logo'),
-            fixedWidth: SDeviceUtils.isMobileScreen(Get.context!) ? null : 200),
+          label: Text('Brand'),
+        ),
+        DataColumn2(label: Text('Logo'), fixedWidth: 70),
         DataColumn2(
-            label: const Text('Brand'),
-            fixedWidth: SDeviceUtils.isMobileScreen(Get.context!) ? null : 200),
+          label: Text('TM number'),
+        ),
         DataColumn2(
-            label: const Text('Seller name'),
-            fixedWidth: SDeviceUtils.isMobileScreen(Get.context!) ? null : 200),
+          label: Text('Owner name'),
+        ),
         DataColumn2(
-            label: const Text('Owner name'),
-            fixedWidth: SDeviceUtils.isMobileScreen(Get.context!) ? null : 200),
+          label: Text('Published'),
+        ),
         DataColumn2(
-            label: const Text('Published'),
-            fixedWidth: SDeviceUtils.isMobileScreen(Get.context!) ? null : 200),
+          label: Text('Featured'),
+        ),
         DataColumn2(
-            label: const Text('Featured'),
-            fixedWidth: SDeviceUtils.isMobileScreen(Get.context!) ? null : 200),
+          label: Text('Date'),
+        ),
         DataColumn2(
-            label: const Text('Date'),
-            fixedWidth: SDeviceUtils.isMobileScreen(Get.context!) ? null : 200),
+          label: Text('Status'),
+        ),
         DataColumn2(
-            label: const Text('Status'),
-            fixedWidth: SDeviceUtils.isMobileScreen(Get.context!) ? null : 200),
-        DataColumn2(
-            label: const Text('Actions'),
-            fixedWidth: SDeviceUtils.isMobileScreen(Get.context!) ? null : 200),
+          label: Text('Actions'),
+        ),
       ],
       source: BrandSourceRows(),
     );

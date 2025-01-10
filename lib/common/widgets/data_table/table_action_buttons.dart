@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:store/utils/constants/colors.dart';
 
 class STableActionButtons extends StatelessWidget {
   const STableActionButtons(
       {super.key,
-      this.edit = true,
-      this.delete = true,
+      this.edit = false,
+      this.more = true,
+      this.delete = false,
       this.view = false,
       this.onDeletePressed,
+      this.onMorePressed,
       this.onViewPressed,
       this.onEditPressed});
-  final bool edit, delete, view;
-  final VoidCallback? onDeletePressed, onViewPressed, onEditPressed;
+  final bool edit, delete, view, more;
+  final VoidCallback? onDeletePressed,
+      onViewPressed,
+      onEditPressed,
+      onMorePressed;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -18,14 +24,31 @@ class STableActionButtons extends StatelessWidget {
         if (view)
           IconButton(
               onPressed: onViewPressed,
-              icon: const Icon(Icons.remove_red_eye_rounded)),
+              icon: const Icon(
+                Icons.remove_red_eye_rounded,
+                color: TColors.darkGrey,
+              )),
         if (edit)
           IconButton(
-              onPressed: onEditPressed, icon: const Icon(Icons.edit_document)),
+              onPressed: onEditPressed,
+              icon: const Icon(
+                Icons.edit_document,
+                color: TColors.darkGrey,
+              )),
         if (delete)
           IconButton(
               onPressed: onDeletePressed,
-              icon: const Icon(Icons.delete_forever_rounded))
+              icon: const Icon(
+                Icons.delete,
+                color: TColors.darkGrey,
+              )),
+        if (more)
+          IconButton(
+              onPressed: onMorePressed,
+              icon: const Icon(
+                Icons.more_vert_rounded,
+                color: TColors.darkGrey,
+              ))
       ],
     );
   }

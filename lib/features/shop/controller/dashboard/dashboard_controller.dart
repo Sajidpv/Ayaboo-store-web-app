@@ -7,61 +7,62 @@ import 'package:store/utils/helpers/helper_functions.dart';
 class DashboardController extends GetxController {
   static DashboardController get instance => Get.find();
   final RxList<double> weeklySales = <double>[].obs;
-  final RxMap<OrderStatus, int> orderStatusData = <OrderStatus, int>{}.obs;
-  final RxMap<OrderStatus, double> totalAmounts = <OrderStatus, double>{}.obs;
+  final RxMap<DefaultStatus, int> orderStatusData = <DefaultStatus, int>{}.obs;
+  final RxMap<DefaultStatus, double> totalAmounts =
+      <DefaultStatus, double>{}.obs;
   static final List<OrderModel> orders = [
     OrderModel(
       id: 'CWT0012',
-      status: OrderStatus.processing,
+      status: DefaultStatus.processing,
       totalAmount: 265,
       orderDate: DateTime.now().subtract(const Duration(days: 2)),
       deliveryDate: DateTime.now().add(const Duration(days: 3)),
     ),
     OrderModel(
       id: 'CWT0025',
-      status: OrderStatus.shipped,
+      status: DefaultStatus.shipped,
       totalAmount: 369,
       orderDate: DateTime.now().subtract(const Duration(days: 3)),
       deliveryDate: DateTime.now().add(const Duration(days: 4)),
     ),
     OrderModel(
       id: 'CWT0152',
-      status: OrderStatus.delivered,
+      status: DefaultStatus.delivered,
       totalAmount: 254,
       orderDate: DateTime.now().add(const Duration(days: 4)),
       deliveryDate: DateTime.now().add(const Duration(days: 5)),
     ),
     OrderModel(
       id: 'CWT0150',
-      status: OrderStatus.pending,
+      status: DefaultStatus.pending,
       totalAmount: 224,
       orderDate: DateTime.now().add(const Duration(days: 3)),
       deliveryDate: DateTime.now().add(const Duration(days: 5)),
     ),
     OrderModel(
       id: 'CWT0265',
-      status: OrderStatus.pending,
+      status: DefaultStatus.pending,
       totalAmount: 355,
       orderDate: DateTime.now(),
       deliveryDate: DateTime.now().add(const Duration(days: 6)),
     ),
     OrderModel(
       id: 'CWT1536',
-      status: OrderStatus.delivered,
+      status: DefaultStatus.delivered,
       totalAmount: 115,
       orderDate: DateTime.now().subtract(const Duration(days: 1)),
       deliveryDate: DateTime.now().add(const Duration(days: 2)),
     ),
     OrderModel(
       id: 'CWT1530',
-      status: OrderStatus.delivered,
+      status: DefaultStatus.delivered,
       totalAmount: 215,
       orderDate: DateTime.now().subtract(const Duration(days: 3)),
       deliveryDate: DateTime.now().add(const Duration(days: 2)),
     ),
     OrderModel(
       id: 'CWT1537',
-      status: OrderStatus.cancelled,
+      status: DefaultStatus.cancelled,
       totalAmount: 115,
       orderDate: DateTime.now().subtract(const Duration(days: 1)),
       deliveryDate: DateTime.now().add(const Duration(days: 2)),
@@ -103,7 +104,7 @@ class DashboardController extends GetxController {
     ///clear
     orderStatusData.clear();
     ////Map to store total value of each status
-    totalAmounts.value = {for (var status in OrderStatus.values) status: 0.0};
+    totalAmounts.value = {for (var status in DefaultStatus.values) status: 0.0};
     for (var order in orders) {
       ///count order
       final status = order.status;

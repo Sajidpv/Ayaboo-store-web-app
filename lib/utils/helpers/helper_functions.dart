@@ -11,16 +11,20 @@ class SHelperFunctions {
         startOfWeek.year, startOfWeek.month, startOfWeek.day, 0, 0, 0, 0, 0);
   }
 
-  static Color getOrderStatusColor(OrderStatus value) {
-    if (OrderStatus.pending == value) {
+  static Color getDefaultStatusColor(DefaultStatus value) {
+    if (DefaultStatus.pending == value) {
       return Colors.blue;
-    } else if (OrderStatus.processing == value) {
+    } else if (DefaultStatus.processing == value) {
       return Colors.orange;
-    } else if (OrderStatus.shipped == value) {
+    } else if (DefaultStatus.shipped == value) {
       return Colors.purple;
-    } else if (OrderStatus.delivered == value) {
+    } else if (DefaultStatus.delivered == value) {
       return Colors.green;
-    } else if (OrderStatus.cancelled == value) {
+    } else if (DefaultStatus.cancelled == value) {
+      return Colors.red;
+    } else if (DefaultStatus.approved == value) {
+      return Colors.green;
+    } else if (DefaultStatus.rejected == value) {
       return Colors.red;
     } else {
       return Colors.grey;
