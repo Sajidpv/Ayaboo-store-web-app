@@ -31,7 +31,7 @@ class SSidebar extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               if (SDeviceUtils.isMobileScreen(context) && !kIsWeb)
-                TSizes.appBarHeight.height,
+                (TSizes.appBarHeight * 0.2).height,
               InkWell(
                 onTap: () => Get.offAllNamed(SRoutes.dashboard),
                 child: SvgPicture.asset(

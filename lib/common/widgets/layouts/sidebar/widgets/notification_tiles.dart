@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:store/utils/constants/colors.dart';
 import 'package:store/utils/constants/image_strings.dart';
@@ -28,8 +29,14 @@ class NotificationTile extends StatelessWidget {
         ),
         subtitle: const Text(
             'Order ID payment for product name costs price confirmed'),
-        trailing:
-            TextButton(onPressed: () {}, child: const Text('Mark as Read')),
+        trailing: kIsWeb
+            ? TextButton(onPressed: () {}, child: const Text('Mark as Read'))
+            : IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.mark_chat_read_rounded,
+                  color: TColors.primary.withValues(alpha: .8),
+                )),
       ),
     );
   }

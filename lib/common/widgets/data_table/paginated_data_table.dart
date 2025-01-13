@@ -16,7 +16,7 @@ class SPaginatedDataTable extends StatelessWidget {
     required this.columns,
     this.onPageChanged,
     this.tableHeight = 760,
-    this.headerColor = TColors.borderSecondary,
+    this.headerColor = TColors.white,
   });
 
   final bool sortAscending;

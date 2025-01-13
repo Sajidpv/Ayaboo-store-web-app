@@ -3,7 +3,7 @@ import 'package:store/utils/helpers/helper_functions.dart';
 
 class OrderModel {
   final String id, userId, docId, paymentMethod;
-  final DefaultStatus status;
+  final DeliveryStatus status;
   final double totalAmount;
   final DateTime orderDate;
   final DateTime? deliveryDate;
@@ -22,9 +22,9 @@ class OrderModel {
   String get formattedDeliveryDate => deliveryDate != null
       ? SHelperFunctions.getFormattedDate(deliveryDate!)
       : '';
-  String get orderStatusText => status == DefaultStatus.delivered
+  String get orderStatusText => status == DeliveryStatus.delivered
       ? 'Delivered'
-      : status == DefaultStatus.shipped
+      : status == DeliveryStatus.shipped
           ? 'Shipment on the way'
           : 'Processing';
 
@@ -32,6 +32,6 @@ class OrderModel {
   static OrderModel empty() => OrderModel(
       id: '',
       orderDate: DateTime.now(),
-      status: DefaultStatus.pending,
+      status: DeliveryStatus.pending,
       totalAmount: 0);
 }

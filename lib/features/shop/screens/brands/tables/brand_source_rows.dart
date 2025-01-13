@@ -69,17 +69,18 @@ class BrandSourceRows extends DataTableSource {
         overflow: TextOverflow.ellipsis,
       )),
       DataCell(Text(
-        DefaultStatus.pending.toString().split('.')[1],
+        DeliveryStatus.pending.toString().split('.')[1],
         maxLines: 2,
         style: Theme.of(Get.context!).textTheme.bodyLarge!.apply(
-              color:
-                  SHelperFunctions.getDefaultStatusColor(DefaultStatus.pending),
+              color: SHelperFunctions.getDeliveryStatusColor(
+                  DeliveryStatus.pending),
             ),
         overflow: TextOverflow.ellipsis,
       )),
       const DataCell(STableActionButtons(
         edit: true,
         delete: true,
+        more: false,
       )),
     ]);
   }

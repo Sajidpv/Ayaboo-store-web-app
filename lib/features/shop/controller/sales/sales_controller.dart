@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:store/utils/constants/enums.dart';
 
 class SalesController extends GetxController {
   var dataList = <Map<String, dynamic>>[].obs;
@@ -46,18 +47,36 @@ class SalesController extends GetxController {
     dataList.addAll(List.generate(
         33,
         (index) => {
-              'Column1': 'Data ${index + 1}-1',
-              'Column2': 'Data ${index + 1}-2',
-              'Column3': 'Data ${index + 1}-3',
-              'Column4': 'Data ${index + 1}-4'
+              'Column1': '20240506-21040475',
+              'Column2': '0$index ',
+              'Column3.1': 'Seller${index + 1}',
+              'Column3': 'User${index + 1}',
+              'Column4': 'Rs1003${index + 1 * index * index}',
+              'Column5': DeliveryStatus.values[index > 4 ? 0 : index]
+                  .toString()
+                  .split('.')[1],
+              'Column6': PaymentMethods.values[index > 8 ? 0 : index]
+                  .toString()
+                  .split('.')[1],
+              'Column7': PaymentStatus.values[index > 3 ? 0 : index]
+                  .toString()
+                  .split('.')[1],
+              'Column8': 'No refund',
             }));
     filteredDataList.addAll(List.generate(
         33,
         (index) => {
-              'Column1': 'Data ${index + 1}-1',
-              'Column2': 'Data ${index + 1}-2',
-              'Column3': 'Data ${index + 1}-3',
-              'Column4': 'Data ${index + 1}-4'
+              'Column1': '20240506-21040475',
+              'Column2': '0$index ',
+              'Column3.1': 'Seller${index + 1}',
+              'Column3': 'User${index + 1}',
+              'Column4': 'Rs1003${index + 1 * index * index}',
+              'Column5': DeliveryStatus.values[index > 4 ? 0 : index],
+              'Column6': PaymentMethods.values[index > 8 ? 0 : index]
+                  .toString()
+                  .split('.')[1],
+              'Column7': PaymentStatus.values[index > 2 ? 0 : index + 1],
+              'Column8': 'No refund',
             }));
   }
 }

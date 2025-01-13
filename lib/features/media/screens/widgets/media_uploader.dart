@@ -1,5 +1,4 @@
-import 'dart:typed_data';
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
 import 'package:get/get.dart';
@@ -26,6 +25,7 @@ class MediaUploader extends StatelessWidget {
               spacing: TSizes.spaceBtwSections,
               children: [
                 SContainerWidget(
+                  width: double.infinity,
                   elevation: .5,
                   height: 250,
                   showBorder: true,
@@ -38,45 +38,48 @@ class MediaUploader extends StatelessWidget {
                           child: Stack(
                         alignment: Alignment.center,
                         children: [
-                          DropzoneView(
-                              mime: const ['image/jpeg', 'image/png'],
-                              cursor: CursorType.Default,
-                              operation: DragOperation.copy,
-                              onLoaded: () => debugPrint('media loaded'),
-                              onError: (er) => debugPrint('media error'),
-                              onHover: () => debugPrint('media hovered'),
-                              onLeave: () => debugPrint('media leave'),
-                              onCreated: (ctrl) =>
-                                  controller.mediaController = ctrl,
-                              onDropInvalid: (er) =>
-                                  debugPrint('media invalid'),
-                              onDropFiles: (file) =>
-                                  debugPrint('multiple media droped:'),
-                              onDropFile: (file) async {
-                                // if (file is html.File) {
-                                final bytes = await controller.mediaController
-                                    .getFileData(file);
-                                final image = ImageModel(
-                                    url: '',
-                                    folder: '',
-                                    file: file,
-                                    fileName: file.name,
-                                    localImageToDisplay:
-                                        Uint8List.fromList(bytes));
-                                controller.selectedImagesToUpload.add(image);
-                                // } else if (file is String) {
-                                //   debugPrint('zone drop:$file');
-                                // } else {
-                                //   debugPrint(
-                                //       'zone unknown type :${file.runtimeType}');
-                                // }
-                              }),
+                          if (kIsWeb)
+                            DropzoneView(
+                                mime: const ['image/jpeg', 'image/png'],
+                                cursor: CursorType.Default,
+                                operation: DragOperation.copy,
+                                onLoaded: () => debugPrint('media loaded'),
+                                onError: (er) => debugPrint('media error'),
+                                onHover: () => debugPrint('media hovered'),
+                                onLeave: () => debugPrint('media leave'),
+                                onCreated: (ctrl) =>
+                                    controller.mediaController = ctrl,
+                                onDropInvalid: (er) =>
+                                    debugPrint('media invalid'),
+                                onDropFiles: (file) =>
+                                    debugPrint('multiple media droped:'),
+                                onDropFile: (file) async {
+                                  // if (file is html.File) {
+                                  final bytes = await controller.mediaController
+                                      .getFileData(file);
+                                  final image = ImageModel(
+                                      url: '',
+                                      folder: '',
+                                      file: file,
+                                      fileName: file.name,
+                                      localImageToDisplay:
+                                          Uint8List.fromList(bytes));
+                                  controller.selectedImagesToUpload.add(image);
+                                  // } else if (file is String) {
+                                  //   debugPrint('zone drop:$file');
+                                  // } else {
+                                  //   debugPrint(
+                                  //       'zone unknown type :${file.runtimeType}');
+                                  // }
+                                }),
                           Column(
                             mainAxisSize: MainAxisSize.min,
                             spacing: TSizes.spaceBtwItems,
                             children: [
                               const Icon(Icons.folder_copy_outlined),
-                              const Text('Drag and Drop images here.'),
+                              Text(!kIsWeb
+                                  ? 'Select images to upload'
+                                  : 'Drag and Drop images here.'),
                               OutlinedButton(
                                   onPressed: () =>
                                       controller.selectLocalImages(),

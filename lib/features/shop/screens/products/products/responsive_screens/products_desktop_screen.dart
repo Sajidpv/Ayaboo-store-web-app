@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:store/common/widgets/breadcrumbs/breadcrumbs_with_heading.dart';
-import 'package:store/common/widgets/containers/container_widget.dart';
 import 'package:store/features/shop/screens/products/products/tables/product_table.dart';
 import 'package:store/utils/constants/sizes.dart';
 
@@ -22,7 +21,7 @@ class ProductsDesktopScreen extends StatelessWidget {
                 heading: 'All Products',
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
-              const SContainerWidget(child: ProductTable())
+              const ProductTable()
             ],
           ),
         ),

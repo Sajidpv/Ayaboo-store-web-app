@@ -8,17 +8,32 @@ enum TextSizes { small, medium, large }
 
 enum ImageType { network, memory, asset, file, svg }
 
-enum DefaultStatus {
-  processing,
-  cancelled,
+enum DeliveryStatus {
   pending,
+  processing,
   shipped,
   delivered,
-  approved,
-  rejected
+  cancelled,
+}
+
+enum VerificationStatus { all, pending, approved, rejected }
+
+enum PaymentStatus {
+  all,
+  pending,
+  paid,
+  failed,
 }
 
 enum MediaCategory { folders, banners, brands, categories, users, products }
+
+enum SortProduct {
+  all,
+  latest,
+  date,
+  lowtohigh,
+  hightolow,
+}
 
 enum PaymentMethods {
   paypal,

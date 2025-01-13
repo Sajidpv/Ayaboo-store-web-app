@@ -38,7 +38,8 @@ class DashboardOrderStatusPiechartWidget extends StatelessWidget {
                           radius: 100,
                           title: count.toString(),
                           value: count.toDouble(),
-                          color: SHelperFunctions.getDefaultStatusColor(status),
+                          color:
+                              SHelperFunctions.getDeliveryStatusColor(status),
                           titleStyle: const TextStyle(
                               color: TColors.white,
                               fontSize: TSizes.md,
@@ -62,7 +63,7 @@ class DashboardOrderStatusPiechartWidget extends StatelessWidget {
               ],
               rows: controller.orderStatusData.entries.map(
                 (entry) {
-                  final DefaultStatus status = entry.key;
+                  final DeliveryStatus status = entry.key;
                   final int count = entry.value;
                   final totalAmount = controller.totalAmounts[status] ?? 0;
                   return DataRow(cells: [
@@ -74,7 +75,7 @@ class DashboardOrderStatusPiechartWidget extends StatelessWidget {
                             width: 20,
                             height: 20,
                             backgroundColor:
-                                SHelperFunctions.getDefaultStatusColor(status),
+                                SHelperFunctions.getDeliveryStatusColor(status),
                           ),
                           Expanded(
                               child: Text(status

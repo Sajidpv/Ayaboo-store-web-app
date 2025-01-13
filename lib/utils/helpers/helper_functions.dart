@@ -11,20 +11,40 @@ class SHelperFunctions {
         startOfWeek.year, startOfWeek.month, startOfWeek.day, 0, 0, 0, 0, 0);
   }
 
-  static Color getDefaultStatusColor(DefaultStatus value) {
-    if (DefaultStatus.pending == value) {
+  static Color getDeliveryStatusColor(DeliveryStatus value) {
+    if (DeliveryStatus.pending == value) {
       return Colors.blue;
-    } else if (DefaultStatus.processing == value) {
+    } else if (DeliveryStatus.processing == value) {
       return Colors.orange;
-    } else if (DefaultStatus.shipped == value) {
+    } else if (DeliveryStatus.shipped == value) {
       return Colors.purple;
-    } else if (DefaultStatus.delivered == value) {
+    } else if (DeliveryStatus.delivered == value) {
       return Colors.green;
-    } else if (DefaultStatus.cancelled == value) {
+    } else if (DeliveryStatus.cancelled == value) {
       return Colors.red;
-    } else if (DefaultStatus.approved == value) {
+    } else {
+      return Colors.grey;
+    }
+  }
+
+  static Color getVerificationStatusColor(VerificationStatus value) {
+    if (VerificationStatus.pending == value) {
+      return Colors.blue;
+    } else if (VerificationStatus.approved == value) {
       return Colors.green;
-    } else if (DefaultStatus.rejected == value) {
+    } else if (VerificationStatus.rejected == value) {
+      return Colors.red;
+    } else {
+      return Colors.grey;
+    }
+  }
+
+  static Color getPaymentStatusColor(PaymentStatus value) {
+    if (PaymentStatus.pending == value) {
+      return Colors.blue;
+    } else if (PaymentStatus.paid == value) {
+      return Colors.green;
+    } else if (PaymentStatus.failed == value) {
       return Colors.red;
     } else {
       return Colors.grey;
