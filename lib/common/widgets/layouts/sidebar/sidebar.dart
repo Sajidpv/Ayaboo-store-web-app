@@ -94,7 +94,7 @@ class SSidebar extends StatelessWidget {
                     itemName: 'Sales',
                     children: [
                       MenuItem(
-                        route: SRoutes.sales,
+                        route: SRoutes.orders,
                         itemName: 'All Orders',
                       ),
                     ],

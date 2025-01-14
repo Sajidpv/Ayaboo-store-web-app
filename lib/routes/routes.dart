@@ -16,7 +16,8 @@ class SRoutes {
   static const String product = '/products';
   static const String productReview = '/products/review';
   static const String createProduct = '/products/create-product';
-  static const String sales = '/sales/orders';
+  static const String orders = '/sales/orders';
+  static const String orderDetails = '/sales/orders/order-details';
   static const String customerRefund = '/customer-refunds';
   static const String customers = '/customers';
   static const String stockTransfer = '/stock/transfer';
@@ -47,7 +48,7 @@ class SRoutes {
     dashboard,
     product,
     productReview,
-    sales,
+    orders,
     customerRefund,
     customers,
     stockTransfer,
@@ -77,7 +78,8 @@ class SRoutes {
     createProduct,
     product,
     productReview,
-    sales,
+    orders,
+    orderDetails,
     customerRefund,
     customers,
     stockTransfer,

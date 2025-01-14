@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:store/common/widgets/breadcrumbs/page_heading.dart';
 import 'package:store/routes/routes.dart';
+import 'package:store/utils/constants/colors.dart';
 
 import 'package:store/utils/constants/sizes.dart';
 
@@ -38,7 +39,10 @@ class SBreadcrumbsWithHeading extends StatelessWidget {
             for (int i = 0; i < breadcrumbItems.length; i++)
               Row(
                 children: [
-                  const Text('/'),
+                  const Text(
+                    '/',
+                    style: TextStyle(color: TColors.darkGrey),
+                  ),
                   InkWell(
                     onTap: i == breadcrumbItems.length - 1
                         ? null

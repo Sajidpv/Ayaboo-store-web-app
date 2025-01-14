@@ -1,0 +1,139 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:store/common/widgets/breadcrumbs/breadcrumbs_with_heading.dart';
+import 'package:store/common/widgets/containers/container_widget.dart';
+import 'package:store/common/widgets/filters/sort_dropdown_section.dart';
+import 'package:store/features/shop/screens/sales/order_details/components/build_header_details_row_component.dart';
+import 'package:store/features/shop/screens/sales/order_details/components/build_sort_title_component.dart';
+import 'package:store/features/shop/screens/sales/order_details/components/build_text_sections.dart';
+import 'package:store/features/shop/screens/sales/order_details/components/qrcode_section.dart';
+import 'package:store/features/shop/screens/sales/order_details/tables/order_details_table.dart';
+import 'package:store/features/shop/screens/sales/order_details/widgets/order_details_amount_calculation_section.dart';
+import 'package:store/routes/routes.dart';
+import 'package:store/utils/constants/colors.dart';
+import 'package:store/utils/constants/enums.dart';
+import 'package:store/utils/constants/sizes.dart';
+
+class OrderDetailsMobileScreen extends StatelessWidget {
+  const OrderDetailsMobileScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(TSizes.defaultSpace),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: TSizes.spaceBtwItems,
+            children: [
+              SBreadcrumbsWithHeading(
+                breadcrumbItems: const [SRoutes.orders, 'Order Details'],
+                heading: 'Orders Details',
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+              _buildSortSection(),
+              const QrcodeSection(),
+              BuildOrderDetailsHeaderRowComponent(
+                title: 'Customer',
+                icon: Icons.person,
+                child: Text(
+                    'Sulfiker\nPanakkad, Ayikode south, Kerala-676542,India',
+                    maxLines: 4,
+                    style: Theme.of(context).textTheme.bodyLarge),
+              ),
+              BuildOrderDetailsHeaderRowComponent(
+                title: 'Order Info',
+                icon: Icons.receipt,
+                child: buildProductDescriptionDetails(
+                  title: 'Status',
+                  value: DeliveryStatus.pending
+                      .toString()
+                      .split('.')[1]
+                      .capitalize!,
+                ),
+              ),
+              BuildOrderDetailsHeaderRowComponent(
+                title: 'Payment Info',
+                icon: Icons.payments_rounded,
+                child: Column(
+                  children: [
+                    buildProductDescriptionDetails(
+                      title: 'Status',
+                      value: PaymentStatus.paid
+                          .toString()
+                          .split('.')[1]
+                          .capitalize!,
+                    ),
+                    buildProductDescriptionDetails(
+                      title: 'Status',
+                      value: PaymentMethods.creditCard
+                          .toString()
+                          .split('.')[1]
+                          .capitalize!,
+                    ),
+                  ],
+                ),
+              ),
+              const SContainerWidget(
+                child: OrderDetailsTable(),
+              ),
+              const OrderDetailsAmountCalculationSectionComponent()
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+Widget _buildSortSection() {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    spacing: TSizes.spaceBtwItems,
+    children: [
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          buildSortTitle(text: ' Assign delivery partner'),
+          ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 200),
+            child: SortDropDown(
+              hint: 'Assign to Logistics',
+              onChanged: (p0) {},
+              values: VerificationStatus.values,
+            ),
+          ),
+        ],
+      ),
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          buildSortTitle(text: ' Payment Status'),
+          ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 200),
+            child: SortDropDown(
+              hint: 'Payment Status',
+              onChanged: (p0) {},
+              values: PaymentStatus.values,
+            ),
+          ),
+        ],
+      ),
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          buildSortTitle(text: ' Delivery Status'),
+          ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 200),
+            child: SortDropDown(
+              hint: 'Delivery Status',
+              onChanged: (p0) {},
+              values: DeliveryStatus.values,
+            ),
+          ),
+        ],
+      ),
+    ],
+  );
+}

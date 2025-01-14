@@ -6,13 +6,13 @@ import 'package:store/common/widgets/data_table/paginated_data_table.dart';
 import 'package:store/common/widgets/filters/search_box.dart';
 import 'package:store/common/widgets/filters/sort_dropdown_section.dart';
 import 'package:store/features/shop/controller/sales/sales_controller.dart';
-import 'package:store/features/shop/screens/sales/table/sale_table_source_row.dart';
+import 'package:store/features/shop/screens/sales/orders/table/order_table_source_row.dart';
 import 'package:store/utils/constants/enums.dart';
 import 'package:store/utils/constants/sizes.dart';
 import 'package:store/utils/device/device_utility.dart';
 
-class SalesTable extends StatelessWidget {
-  const SalesTable({
+class OrderTable extends StatelessWidget {
+  const OrderTable({
     super.key,
   });
 
@@ -24,7 +24,7 @@ class SalesTable extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         spacing: TSizes.spaceBtwItems,
         children: [
-          if (!SDeviceUtils.isMobileScreen(context))
+          if (SDeviceUtils.isDesktopScreen(context))
             Row(
               spacing: TSizes.spaceBtwItems,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -34,50 +34,16 @@ class SalesTable extends StatelessWidget {
                   onChanged: controller.search,
                   hint: 'Search by order number',
                 ),
-                Row(
-                  spacing: TSizes.spaceBtwItems,
-                  children: [
-                    SizedBox(
-                      width: 200,
-                      child: SortDropDown(
-                        hint: 'Filter by seller',
-                        onChanged: (p0) {},
-                        values: VerificationStatus.values,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 200,
-                      child: SortDropDown(
-                        hint: 'Bulk Action',
-                        onChanged: (p0) {},
-                        values: VerificationStatus.values,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 200,
-                      child: SortDropDown(
-                        hint: 'Filter by delivery status',
-                        onChanged: (p0) {},
-                        values: DeliveryStatus.values,
-                      ),
-                    ),
-                  ],
-                )
+                _buildSortSection()
               ],
             ),
-          if (SDeviceUtils.isMobileScreen(context))
-            const SearchBox(
-              hint: 'Search by product name',
+          if (!SDeviceUtils.isDesktopScreen(context))
+            SearchBox(
+              controller: controller.searchController,
+              onChanged: controller.search,
+              hint: 'Search by order number',
             ),
-          if (SDeviceUtils.isMobileScreen(context))
-            SizedBox(
-              width: 200,
-              child: SortDropDown(
-                selectedValue: VerificationStatus.all,
-                values: VerificationStatus.values,
-                onChanged: (p0) {},
-              ),
-            ),
+          if (!SDeviceUtils.isDesktopScreen(context)) ...[_buildSortSection()],
           Obx(() {
             Visibility(
                 visible: false,
@@ -134,10 +100,44 @@ class SalesTable extends StatelessWidget {
                     label: Text('Options'),
                   ),
                 ],
-                source: SalesDataSource());
+                source: OrderTableSourceRow());
           }),
         ],
       ),
     );
   }
+}
+
+Widget _buildSortSection() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.end,
+    spacing: TSizes.spaceBtwItems,
+    children: [
+      ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 150),
+        child: SortDropDown(
+          hint: 'Filter by seller',
+          onChanged: (p0) {},
+          values: VerificationStatus.values,
+        ),
+      ),
+      if (!SDeviceUtils.isMobileScreen(Get.context!))
+        ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 150),
+          child: SortDropDown(
+            hint: 'Bulk Action',
+            onChanged: (p0) {},
+            values: VerificationStatus.values,
+          ),
+        ),
+      ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 150),
+        child: SortDropDown(
+          hint: 'Filter by delivery status',
+          onChanged: (p0) {},
+          values: DeliveryStatus.values,
+        ),
+      ),
+    ],
+  );
 }

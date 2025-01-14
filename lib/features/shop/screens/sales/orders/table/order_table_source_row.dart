@@ -1,15 +1,14 @@
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:store/common/widgets/buttons/material_button.dart';
 import 'package:store/common/widgets/containers/container_widget.dart';
-import 'package:store/common/widgets/data_table/table_action_buttons.dart';
 import 'package:store/features/shop/controller/sales/sales_controller.dart';
+import 'package:store/routes/routes.dart';
 import 'package:store/utils/constants/colors.dart';
 import 'package:store/utils/constants/sizes.dart';
 import 'package:store/utils/helpers/helper_functions.dart';
 
-class SalesDataSource extends DataTableSource {
+class OrderTableSourceRow extends DataTableSource {
   final SalesController controller = Get.put(SalesController());
 
   @override
@@ -66,33 +65,7 @@ class SalesDataSource extends DataTableSource {
                 style: const TextStyle(color: TColors.white)))),
         DataCell(Text(data['Column8'] ?? '')),
         DataCell(
-          PopupMenuButton<int>(
-            color: TColors.white,
-            onSelected: (value) {
-              if (value == 0) {
-                // Handle "View"
-              } else if (value == 1) {
-                // Handle "Download"
-              } else if (value == 2) {
-                // Handle "Cancel Order"
-              }
-            },
-            itemBuilder: (context) => [
-              const PopupMenuItem(
-                value: 0,
-                child: Text('View'),
-              ),
-              const PopupMenuItem(
-                value: 1,
-                child: Text('Download'),
-              ),
-              const PopupMenuItem(
-                value: 2,
-                child: Text('Cancel Order'),
-              ),
-            ],
-            child: const Icon(Icons.more_horiz),
-          ),
+          _saleTableMoreAction(),
         ),
       ],
     );
@@ -106,4 +79,34 @@ class SalesDataSource extends DataTableSource {
 
   @override
   int get selectedRowCount => 0;
+}
+
+Widget _saleTableMoreAction() {
+  return PopupMenuButton<int>(
+    color: TColors.white,
+    onSelected: (value) {
+      if (value == 0) {
+        Get.toNamed(SRoutes.orderDetails);
+      } else if (value == 1) {
+        // Handle "Download"
+      } else if (value == 2) {
+        // Handle "Cancel Order"
+      }
+    },
+    itemBuilder: (context) => [
+      const PopupMenuItem(
+        value: 0,
+        child: Text('View'),
+      ),
+      const PopupMenuItem(
+        value: 1,
+        child: Text('Download'),
+      ),
+      const PopupMenuItem(
+        value: 2,
+        child: Text('Cancel Order'),
+      ),
+    ],
+    child: const Icon(Icons.more_horiz),
+  );
 }

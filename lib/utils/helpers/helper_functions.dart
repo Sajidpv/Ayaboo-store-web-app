@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:store/utils/constants/colors.dart';
 import 'package:store/utils/constants/enums.dart';
 
 class SHelperFunctions {
@@ -51,6 +52,26 @@ class SHelperFunctions {
     }
   }
 
+  static Color getReturnStatusColor(ReturnStatus value) {
+    if (ReturnStatus.pending == value) {
+      return Colors.blue;
+    } else if (ReturnStatus.recieved == value) {
+      return Colors.greenAccent;
+    } else if (ReturnStatus.accepted == value) {
+      return Colors.green;
+    } else if (ReturnStatus.rejected == value) {
+      return Colors.red;
+    } else if (ReturnStatus.replaced == value) {
+      return Colors.orange;
+    } else if (ReturnStatus.ontransist == value) {
+      return Colors.yellow;
+    } else if (ReturnStatus.refunded == value) {
+      return Colors.purpleAccent;
+    } else {
+      return Colors.grey;
+    }
+  }
+
   static Color? getColor(String value) {
     /// Define your product specific colors here and it will match the attribute colors and show specific 🟠🟡🟢🔵🟣🟤
 
@@ -83,7 +104,7 @@ class SHelperFunctions {
     } else if (value == 'Indigo') {
       return Colors.indigo;
     } else {
-      return null;
+      return TColors.primary;
     }
   }
 

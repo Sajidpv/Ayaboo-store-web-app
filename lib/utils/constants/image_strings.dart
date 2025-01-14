@@ -120,6 +120,7 @@ class SImages {
 
   //Profile
   static const String user = "assets/images/user.png";
+  static const String qrcode = "assets/images/qrcode.png";
 
   // -- Payment Methods
   static const String applePay = "assets/icons/payment_methods/apple-pay.png";

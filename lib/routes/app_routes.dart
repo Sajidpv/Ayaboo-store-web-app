@@ -5,10 +5,12 @@ import 'package:store/common/widgets/layouts/templates/site_layout.dart';
 import 'package:store/features/auth/screens/login_screen.dart';
 import 'package:store/features/media/screens/media_screen.dart';
 import 'package:store/features/shop/screens/brands/brand_screen.dart';
+import 'package:store/features/shop/screens/customer.refunds/customer_refund_screen.dart';
 import 'package:store/features/shop/screens/dashbord/dashbord_screen.dart';
 import 'package:store/features/shop/screens/products/product%20reviews/product_review_screen.dart';
 import 'package:store/features/shop/screens/products/products/products_screen.dart';
-import 'package:store/features/shop/screens/sales/sales_screen.dart';
+import 'package:store/features/shop/screens/sales/order_details/order_details_screen.dart';
+import 'package:store/features/shop/screens/sales/orders/order_screen.dart';
 import 'package:store/routes/route_middleware.dart';
 import 'package:store/routes/routes.dart';
 
@@ -47,14 +49,19 @@ class SAppRoutes {
       page: () => const ProductReviewScreen(),
     ),
     GetPage(
-      name: SRoutes.sales,
+      name: SRoutes.orders,
       middlewares: [TRouteMiddleware()],
-      page: () => const SalesScreen(),
+      page: () => const OrderScreen(),
+    ),
+    GetPage(
+      name: SRoutes.orderDetails,
+      middlewares: [TRouteMiddleware()],
+      page: () => const OrderDetailsScreen(),
     ),
     GetPage(
       name: SRoutes.customerRefund,
       middlewares: [TRouteMiddleware()],
-      page: () => const SSiteLayout(),
+      page: () => const CustomerRefundScreen(),
     ),
     GetPage(
       name: SRoutes.customers,

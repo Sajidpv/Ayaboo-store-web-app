@@ -5,6 +5,7 @@ import 'package:store/common/widgets/data_table/table_action_buttons.dart';
 import 'package:store/common/widgets/images/s_rounded_image.dart';
 import 'package:store/common/widgets/toggles/toggle_switch.dart';
 import 'package:store/features/shop/controller/brand/brand_controller.dart';
+import 'package:store/features/shop/screens/sales/order_details/components/build_text_sections.dart';
 import 'package:store/utils/constants/colors.dart';
 import 'package:store/utils/constants/enums.dart';
 import 'package:store/utils/constants/image_strings.dart';
@@ -65,15 +66,15 @@ class ProductSourceRow extends DataTableSource {
                             .copyWith(fontSize: TSizes.md),
                       ),
                       TSizes.sm.height,
-                      _buildProductDescriptionDetails(
+                      buildProductDescriptionDetails(
                           title: 'Brand', value: 'Odio fashion'),
-                      _buildProductDescriptionDetails(
+                      buildProductDescriptionDetails(
                           title: 'Wheight in gm', value: '200'),
-                      _buildProductDescriptionDetails(
+                      buildProductDescriptionDetails(
                           title: 'Min. order', value: '10'),
-                      _buildProductDescriptionDetails(
+                      buildProductDescriptionDetails(
                           maxLines: 2, title: 'Size', value: 'L,XL,M,XXL,XXXL'),
-                      _buildProductDescriptionDetails(
+                      buildProductDescriptionDetails(
                           maxLines: 2,
                           title: 'Color',
                           value: 'RED,BLUE,GREEN,BLACK,YELLOW'),
@@ -202,33 +203,4 @@ class ProductSourceRow extends DataTableSource {
 
   @override
   int get selectedRowCount => 0;
-}
-
-Widget _buildProductDescriptionDetails(
-    {required String title, required String value, int maxLines = 1}) {
-  return Row(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Text(
-        '$title : ',
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-        style: Theme.of(Get.context!)
-            .textTheme
-            .titleLarge!
-            .copyWith(fontSize: TSizes.fontSizeSm),
-      ),
-      Expanded(
-        child: Text(
-          value,
-          maxLines: maxLines,
-          overflow: TextOverflow.ellipsis,
-          style: Theme.of(Get.context!)
-              .textTheme
-              .bodyLarge!
-              .copyWith(color: TColors.darkGrey),
-        ),
-      ),
-    ],
-  );
 }

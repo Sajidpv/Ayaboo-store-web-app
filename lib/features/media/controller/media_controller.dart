@@ -43,7 +43,7 @@ class MediaController extends GetxController {
           message: 'Please select a folder to upload the image(s).');
       return;
     }
-    SDialogues.defaultDialog(
+    SDialogues.defaultConfirmationDialog(
       context: Get.context!,
       title: 'Upload Images',
       confirmText: 'Upload',

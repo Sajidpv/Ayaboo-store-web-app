@@ -6,6 +6,20 @@
 /// Switch of Custom Brand-Text-Size Widget
 enum TextSizes { small, medium, large }
 
+enum RefundTypes { all, refund, replace }
+
+enum ReturnTypes { refund, replace }
+
+enum ReturnStatus {
+  pending,
+  recieved,
+  accepted,
+  rejected,
+  refunded,
+  replaced,
+  ontransist
+}
+
 enum ImageType { network, memory, asset, file, svg }
 
 enum DeliveryStatus {
