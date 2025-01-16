@@ -105,7 +105,7 @@ class SSidebar extends StatelessWidget {
                     itemName: 'Customer Refunds',
                   ),
                   MenuItem(
-                    route: SRoutes.n404,
+                    route: SRoutes.customers,
                     image: SImages.sideCustICon,
                     itemName: 'Customers',
                   ),
@@ -122,7 +122,8 @@ class SSidebar extends StatelessWidget {
                         route: SRoutes.stockRecived,
                         itemName: 'Stock Recived',
                       ),
-                      MenuItem(route: SRoutes.stockReturns, itemName: 'Returns')
+                      MenuItem(
+                          route: SRoutes.stockRequests, itemName: 'Requests')
                     ],
                   ),
                   MenuItem(

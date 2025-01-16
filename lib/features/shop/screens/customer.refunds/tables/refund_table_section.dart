@@ -6,8 +6,7 @@ import 'package:store/common/widgets/filters/search_box.dart';
 import 'package:store/common/widgets/filters/sort_dropdown_section.dart';
 import 'package:store/features/shop/controller/customer.refund/customer_refund_controller.dart';
 import 'package:store/features/shop/screens/customer.refunds/tables/refund.all/refund_replace_table.dart';
-import 'package:store/features/shop/screens/customer.refunds/tables/refund/refund_table.dart';
-import 'package:store/features/shop/screens/customer.refunds/tables/replace/replace_table.dart';
+
 import 'package:store/utils/constants/colors.dart';
 import 'package:store/utils/constants/enums.dart';
 import 'package:store/utils/constants/sizes.dart';
@@ -38,7 +37,7 @@ class RefundTableSection extends StatelessWidget {
                 ),
                 ConstrainedBox(
                   constraints: const BoxConstraints(maxWidth: 220),
-                  child: SortDropDown(
+                  child: SCustomDropDown(
                     onChanged: (p0) {},
                     hint: 'Filter by return status',
                     values: ReturnStatus.values,
@@ -52,7 +51,7 @@ class RefundTableSection extends StatelessWidget {
             ),
             ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: 220),
-              child: SortDropDown(
+              child: SCustomDropDown(
                 onChanged: (p0) {},
                 hint: 'Filter by delivery status',
                 values: DeliveryStatus.values,
@@ -65,31 +64,26 @@ class RefundTableSection extends StatelessWidget {
                 border: Border.all(color: TColors.grey),
                 borderRadius: BorderRadius.circular(TSizes.defaultSpace)),
             height: 50,
-            child: Expanded(
-              child: ListView.builder(
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemCount: 3,
-                itemBuilder: (BuildContext context, int index) {
-                  return Obx(
-                    () => buildTextChoiceChip(
-                      label: RefundTypes.values[index].toString().split('.')[1],
-                      selected: controller.selectedRefundType.value ==
-                          RefundTypes.values[index],
-                      onSelected: (bool value) => controller
-                          .changeRefundType(RefundTypes.values[index]),
-                    ),
-                  );
-                },
-              ),
+            child: ListView.builder(
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              itemCount: 3,
+              itemBuilder: (BuildContext context, int index) {
+                return Obx(
+                  () => buildTextChoiceChip(
+                    label: RefundTypes.values[index].toString().split('.')[1],
+                    selected: controller.selectedRefundType.value ==
+                        RefundTypes.values[index],
+                    onSelected: (bool value) =>
+                        controller.changeRefundType(RefundTypes.values[index]),
+                  ),
+                );
+              },
             ),
           ),
           Obx(() {
             if (controller.selectedRefundType.value == RefundTypes.refund) {
-              return const RefundTable();
-            } else if (controller.selectedRefundType.value ==
-                RefundTypes.replace) {
-              return const ReplaceTable();
+              return const RefundReplaceTable();
             } else {
               return const RefundReplaceTable();
             }

@@ -10,7 +10,6 @@ import 'package:store/features/shop/screens/sales/order_details/components/qrcod
 import 'package:store/features/shop/screens/sales/order_details/tables/order_details_table.dart';
 import 'package:store/features/shop/screens/sales/order_details/widgets/order_details_amount_calculation_section.dart';
 import 'package:store/routes/routes.dart';
-import 'package:store/utils/constants/colors.dart';
 import 'package:store/utils/constants/enums.dart';
 import 'package:store/utils/constants/sizes.dart';
 
@@ -98,7 +97,7 @@ Widget _buildSortSection() {
           buildSortTitle(text: ' Assign delivery partner'),
           ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 200),
-            child: SortDropDown(
+            child: SCustomDropDown(
               hint: 'Assign to Logistics',
               onChanged: (p0) {},
               values: VerificationStatus.values,
@@ -112,7 +111,7 @@ Widget _buildSortSection() {
           buildSortTitle(text: ' Payment Status'),
           ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 200),
-            child: SortDropDown(
+            child: SCustomDropDown(
               hint: 'Payment Status',
               onChanged: (p0) {},
               values: PaymentStatus.values,
@@ -126,7 +125,7 @@ Widget _buildSortSection() {
           buildSortTitle(text: ' Delivery Status'),
           ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 200),
-            child: SortDropDown(
+            child: SCustomDropDown(
               hint: 'Delivery Status',
               onChanged: (p0) {},
               values: DeliveryStatus.values,

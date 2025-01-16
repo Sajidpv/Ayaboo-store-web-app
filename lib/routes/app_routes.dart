@@ -6,11 +6,19 @@ import 'package:store/features/auth/screens/login_screen.dart';
 import 'package:store/features/media/screens/media_screen.dart';
 import 'package:store/features/shop/screens/brands/brand_screen.dart';
 import 'package:store/features/shop/screens/customer.refunds/customer_refund_screen.dart';
+import 'package:store/features/shop/screens/customers/customers_screen.dart';
 import 'package:store/features/shop/screens/dashbord/dashbord_screen.dart';
 import 'package:store/features/shop/screens/products/product%20reviews/product_review_screen.dart';
 import 'package:store/features/shop/screens/products/products/products_screen.dart';
+import 'package:store/features/shop/screens/reports/sales/sales_report_screen.dart';
+import 'package:store/features/shop/screens/reports/searchs/user_search_screen.dart';
+import 'package:store/features/shop/screens/reports/stock/stock_report_screen.dart';
+import 'package:store/features/shop/screens/reports/wishlist/whishlist_screen.dart';
 import 'package:store/features/shop/screens/sales/order_details/order_details_screen.dart';
 import 'package:store/features/shop/screens/sales/orders/order_screen.dart';
+import 'package:store/features/shop/screens/stock/stock_recieved/stock_recived_screen.dart';
+import 'package:store/features/shop/screens/stock/stock_requests/stock_requests_screen.dart';
+import 'package:store/features/shop/screens/stock/stock_transfer/stock_transfer_screen.dart';
 import 'package:store/routes/route_middleware.dart';
 import 'package:store/routes/routes.dart';
 
@@ -66,22 +74,22 @@ class SAppRoutes {
     GetPage(
       name: SRoutes.customers,
       middlewares: [TRouteMiddleware()],
-      page: () => const SSiteLayout(),
+      page: () => const CustomersScreen(),
     ),
     GetPage(
       name: SRoutes.stockRecived,
       middlewares: [TRouteMiddleware()],
-      page: () => const SSiteLayout(),
+      page: () => const StockRecivedScreen(),
     ),
     GetPage(
-      name: SRoutes.stockReturns,
+      name: SRoutes.stockRequests,
       middlewares: [TRouteMiddleware()],
-      page: () => const SSiteLayout(),
+      page: () => const StockRequestsScreen(),
     ),
     GetPage(
       name: SRoutes.stockTransfer,
       middlewares: [TRouteMiddleware()],
-      page: () => const SSiteLayout(),
+      page: () => const StockTransferScreen(),
     ),
     GetPage(
       name: SRoutes.sellerConversation,
@@ -106,22 +114,22 @@ class SAppRoutes {
     GetPage(
       name: SRoutes.reportSale,
       middlewares: [TRouteMiddleware()],
-      page: () => const SSiteLayout(),
+      page: () => const SalesReportScreen(),
     ),
     GetPage(
       name: SRoutes.reportSearchs,
       middlewares: [TRouteMiddleware()],
-      page: () => const SSiteLayout(),
+      page: () => const UserSearchScreen(),
     ),
     GetPage(
       name: SRoutes.reportStock,
       middlewares: [TRouteMiddleware()],
-      page: () => const SSiteLayout(),
+      page: () => const StockReportScreen(),
     ),
     GetPage(
       name: SRoutes.reportWishlist,
       middlewares: [TRouteMiddleware()],
-      page: () => const SSiteLayout(),
+      page: () => const WhishlistScreen(),
     ),
     GetPage(
       name: SRoutes.accountCommission,

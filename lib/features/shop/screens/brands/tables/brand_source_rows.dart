@@ -54,15 +54,6 @@ class BrandSourceRows extends DataTableSource {
           ),
         ),
       ),
-      DataCell(
-        Obx(
-          () => ToggleSwitchWidget(
-            value: controller.togglePublishedBrand.value,
-            onChanged: controller.togglePublishButton,
-            color: TColors.success,
-          ),
-        ),
-      ),
       DataCell(Text(
         SHelperFunctions.getFormattedDate(DateTime.now()),
         maxLines: 2,
@@ -77,9 +68,9 @@ class BrandSourceRows extends DataTableSource {
             ),
         overflow: TextOverflow.ellipsis,
       )),
-      const DataCell(STableActionButtons(
-        edit: true,
-        delete: true,
+      DataCell(STableActionButtons(
+        view: true,
+        onViewPressed: () {},
         more: false,
       )),
     ]);

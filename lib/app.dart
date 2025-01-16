@@ -4,6 +4,7 @@ import 'package:store/bindings/general_bindings.dart';
 import 'package:store/routes/app_routes.dart';
 import 'package:store/routes/routes.dart';
 import 'package:store/utils/constants/text_strings.dart';
+import 'package:store/utils/exceptions/custom_error_handling_widget.dart';
 import 'package:store/utils/theme/theme.dart';
 
 class App extends StatelessWidget {
@@ -12,12 +13,12 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      // builder: (context, child) {
-      //   ErrorWidget.builder = (FlutterErrorDetails errorDetails) {
-      //     return CustomErrorWidget(errorDetails: errorDetails);
-      //   };
-      //   return child ?? const SizedBox.shrink();
-      // },
+      builder: (context, child) {
+        ErrorWidget.builder = (FlutterErrorDetails errorDetails) {
+          return CustomErrorWidget(errorDetails: errorDetails);
+        };
+        return child ?? const SizedBox.shrink();
+      },
       title: STexts.appName,
       themeMode: ThemeMode.light,
       navigatorObservers: [RouteObserver()],
@@ -26,7 +27,7 @@ class App extends StatelessWidget {
       darkTheme: TAppTheme.darkTheme,
       debugShowCheckedModeBanner: false,
       getPages: SAppRoutes.pages,
-      initialRoute: SRoutes.login,
+      initialRoute: SRoutes.dashboard,
       unknownRoute: GetPage(
         name: '/not-found',
         page: () => const NotFoundPage(),

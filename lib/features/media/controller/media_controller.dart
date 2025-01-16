@@ -1,5 +1,4 @@
-import 'dart:typed_data';
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
 import 'package:get/get.dart';
@@ -68,7 +67,9 @@ class MediaController extends GetxController {
             fileName: file.name,
             localImageToDisplay: Uint8List.fromList(bytes));
         selectedImagesToUpload.add(image);
-        print(selectedImagesToUpload.length);
+        if (kDebugMode) {
+          print(selectedImagesToUpload.length);
+        }
 
         // }
       }

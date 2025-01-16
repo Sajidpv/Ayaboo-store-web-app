@@ -30,7 +30,7 @@ class ProductTable extends StatelessWidget {
                 ),
                 SizedBox(
                   width: 200,
-                  child: SortDropDown(
+                  child: SCustomDropDown(
                     onChanged: (p0) {},
                     selectedValue: SortProduct.all,
                     values: SortProduct.values,
@@ -45,7 +45,7 @@ class ProductTable extends StatelessWidget {
           if (SDeviceUtils.isMobileScreen(context))
             SizedBox(
               width: 200,
-              child: SortDropDown(
+              child: SCustomDropDown(
                 onChanged: (p0) {},
                 selectedValue: SortProduct.all,
                 values: SortProduct.values,

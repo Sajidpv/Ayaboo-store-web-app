@@ -30,7 +30,7 @@ class ProductReviewTable extends StatelessWidget {
                 ),
                 SizedBox(
                   width: 200,
-                  child: SortDropDown(
+                  child: SCustomDropDown(
                     selectedValue: VerificationStatus.all,
                     onChanged: (p0) {},
                     values: VerificationStatus.values,
@@ -45,7 +45,7 @@ class ProductReviewTable extends StatelessWidget {
           if (SDeviceUtils.isMobileScreen(context))
             SizedBox(
               width: 200,
-              child: SortDropDown(
+              child: SCustomDropDown(
                 selectedValue: VerificationStatus.all,
                 values: VerificationStatus.values,
                 onChanged: (p0) {},

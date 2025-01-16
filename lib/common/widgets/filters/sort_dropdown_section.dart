@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:store/utils/constants/colors.dart';
 
-class SortDropDown<T extends Enum> extends StatelessWidget {
-  const SortDropDown({
+class SCustomDropDown<T> extends StatelessWidget {
+  const SCustomDropDown({
     super.key,
     required this.values,
     this.hint = 'Sort by',
@@ -39,7 +39,7 @@ class SortDropDown<T extends Enum> extends StatelessWidget {
               (value) => DropdownMenuItem<T>(
                 value: value,
                 child: Text(
-                  value.name.capitalizeFirst.toString(),
+                  value.toString().capitalizeFirst.toString(),
                 ),
               ),
             )

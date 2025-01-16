@@ -46,7 +46,7 @@ class STableActionButtons extends StatelessWidget {
           IconButton(
               onPressed: onMorePressed,
               icon: const Icon(
-                Icons.more_vert_rounded,
+                Icons.more_horiz_rounded,
                 color: TColors.darkGrey,
               ))
       ],

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:store/common/widgets/data_table/paginated_data_table.dart';
 
-import 'package:store/features/shop/screens/customer.refunds/tables/refund/refund_table_source_row.dart';
+import 'package:store/features/shop/screens/customer.refunds/tables/refund.all/refund_items/refund_table_source_row.dart';
 
 class RefundTable extends StatelessWidget {
   const RefundTable({
@@ -14,7 +14,7 @@ class RefundTable extends StatelessWidget {
   Widget build(BuildContext context) {
     return SPaginatedDataTable(
         minWidth: 490,
-        tableHeight: 750,
+        tableHeight: 400,
         dataRowHeight: 70,
         columns: const [
           DataColumn2(

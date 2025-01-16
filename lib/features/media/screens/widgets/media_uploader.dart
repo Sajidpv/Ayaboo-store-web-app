@@ -77,7 +77,7 @@ class MediaUploader extends StatelessWidget {
                             spacing: TSizes.spaceBtwItems,
                             children: [
                               const Icon(Icons.folder_copy_outlined),
-                              Text(!kIsWeb
+                              const Text(!kIsWeb
                                   ? 'Select images to upload'
                                   : 'Drag and Drop images here.'),
                               OutlinedButton(

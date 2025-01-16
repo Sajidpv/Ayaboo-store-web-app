@@ -23,7 +23,7 @@ class SContainerWidget extends StatelessWidget {
     this.borderColor = TColors.borderPrimary,
     this.backgroundColor = TColors.white,
     this.margin,
-    this.padding = const EdgeInsets.all(TSizes.lg),
+    this.padding = const EdgeInsets.all(TSizes.md),
     this.onTap,
     this.elevation,
   });

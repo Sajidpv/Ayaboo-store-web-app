@@ -26,9 +26,6 @@ class BrandTable extends StatelessWidget {
           label: Text('Owner name'),
         ),
         DataColumn2(
-          label: Text('Published'),
-        ),
-        DataColumn2(
           label: Text('Featured'),
         ),
         DataColumn2(

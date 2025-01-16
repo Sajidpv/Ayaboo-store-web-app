@@ -115,7 +115,7 @@ Widget _buildSortSection() {
     children: [
       ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 150),
-        child: SortDropDown(
+        child: SCustomDropDown(
           hint: 'Filter by seller',
           onChanged: (p0) {},
           values: VerificationStatus.values,
@@ -124,7 +124,7 @@ Widget _buildSortSection() {
       if (!SDeviceUtils.isMobileScreen(Get.context!))
         ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 150),
-          child: SortDropDown(
+          child: SCustomDropDown(
             hint: 'Bulk Action',
             onChanged: (p0) {},
             values: VerificationStatus.values,
@@ -132,7 +132,7 @@ Widget _buildSortSection() {
         ),
       ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 150),
-        child: SortDropDown(
+        child: SCustomDropDown(
           hint: 'Filter by delivery status',
           onChanged: (p0) {},
           values: DeliveryStatus.values,

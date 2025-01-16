@@ -22,7 +22,7 @@ class SRoutes {
   static const String customers = '/customers';
   static const String stockTransfer = '/stock/transfer';
   static const String stockRecived = '/stock/recieved';
-  static const String stockReturns = '/stock/return';
+  static const String stockRequests = '/stock/requests';
   static const String sellerProducts = '/seller/products';
   static const String sellerReturns = '/seller/returns';
   static const String sellerConversation = '/seller/conversation';
@@ -53,7 +53,7 @@ class SRoutes {
     customers,
     stockTransfer,
     stockRecived,
-    stockReturns,
+    stockRequests,
     sellerProducts,
     sellerReturns,
     sellerConversation,
@@ -84,7 +84,7 @@ class SRoutes {
     customers,
     stockTransfer,
     stockRecived,
-    stockReturns,
+    stockRequests,
     sellerProducts,
     sellerReturns,
     sellerConversation,

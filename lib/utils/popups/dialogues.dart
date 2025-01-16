@@ -39,24 +39,32 @@ class SDialogues {
     showDialog(
         context: context,
         builder: (BuildContext context) {
-          return AlertDialog(
-            backgroundColor: color,
-            shape: BeveledRectangleBorder(
-                borderRadius:
-                    BorderRadius.circular(TSizes.buttonMinimumRadius)),
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                title,
-                IconButton(
-                  icon: const Icon(Icons.close),
-                  onPressed: () => Get.back(),
-                )
-              ],
+          final double screenWidth = context.width;
+          return ConstrainedBox(
+            constraints: BoxConstraints(
+              maxWidth: screenWidth > 600 ? 600 : screenWidth * 0.9,
             ),
-            content: content,
-            actions: actions,
-            actionsOverflowDirection: VerticalDirection.down,
+            child: SingleChildScrollView(
+              child: AlertDialog(
+                backgroundColor: color,
+                shape: BeveledRectangleBorder(
+                    borderRadius:
+                        BorderRadius.circular(TSizes.buttonMinimumRadius)),
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    title,
+                    IconButton(
+                      icon: const Icon(Icons.close),
+                      onPressed: () => Get.back(),
+                    )
+                  ],
+                ),
+                content: content,
+                actions: actions,
+                actionsOverflowDirection: VerticalDirection.down,
+              ),
+            ),
           );
         });
   }

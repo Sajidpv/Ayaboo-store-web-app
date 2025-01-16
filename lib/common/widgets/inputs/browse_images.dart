@@ -9,10 +9,13 @@ class SBrowsImages extends StatelessWidget {
     super.key,
     this.onPress,
     this.bLabel,
+    this.containerColor,
+    this.textColor,
   });
 
   final void Function()? onPress;
   final String? bLabel;
+  final Color? containerColor, textColor;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +35,8 @@ class SBrowsImages extends StatelessWidget {
           children: [
             Container(
               decoration: BoxDecoration(
-                  color: TColors.textSecondary.withValues(alpha: .2),
+                  color: containerColor ??
+                      TColors.textSecondary.withValues(alpha: .2),
                   borderRadius: const BorderRadius.only(
                       topLeft:
                           Radius.circular(TSizes.inputFieldMinimumRadius - 1),
@@ -46,7 +50,7 @@ class SBrowsImages extends StatelessWidget {
                 style: Theme.of(context)
                     .textTheme
                     .titleMedium!
-                    .copyWith(color: TColors.textSecondary),
+                    .copyWith(color: textColor ?? TColors.textSecondary),
               )),
             ),
             Expanded(

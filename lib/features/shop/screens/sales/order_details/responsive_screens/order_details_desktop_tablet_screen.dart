@@ -121,7 +121,7 @@ Widget _buildSortSection() {
           buildSortTitle(text: ' Assign delivery partner'),
           ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 200),
-            child: SortDropDown(
+            child: SCustomDropDown(
               hint: 'Assign to Logistics',
               onChanged: (p0) {},
               values: VerificationStatus.values,
@@ -136,7 +136,7 @@ Widget _buildSortSection() {
           buildSortTitle(text: ' Payment Status'),
           ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 200),
-            child: SortDropDown(
+            child: SCustomDropDown(
               hint: 'Payment Status',
               onChanged: (p0) {},
               values: PaymentStatus.values,
@@ -151,7 +151,7 @@ Widget _buildSortSection() {
           buildSortTitle(text: ' Delivery Status'),
           ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 200),
-            child: SortDropDown(
+            child: SCustomDropDown(
               hint: 'Delivery Status',
               onChanged: (p0) {},
               values: DeliveryStatus.values,
