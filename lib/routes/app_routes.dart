@@ -4,7 +4,12 @@ import 'package:store/app.dart';
 import 'package:store/common/widgets/layouts/templates/site_layout.dart';
 import 'package:store/features/auth/screens/login_screen.dart';
 import 'package:store/features/media/screens/media_screen.dart';
+import 'package:store/features/shop/screens/accounts/commission_history/commission_history_screen.dart';
+import 'package:store/features/shop/screens/accounts/payment_history/payment_history_screen.dart';
+import 'package:store/features/shop/screens/accounts/rent_history/rent_history_screen.dart';
+import 'package:store/features/shop/screens/accounts/withdrawal_history/money_withdrawal_history_screen.dart';
 import 'package:store/features/shop/screens/brands/brand_screen.dart';
+import 'package:store/features/shop/screens/conversations/conversation_screen.dart';
 import 'package:store/features/shop/screens/customer.refunds/customer_refund_screen.dart';
 import 'package:store/features/shop/screens/customers/customers_screen.dart';
 import 'package:store/features/shop/screens/dashbord/dashbord_screen.dart';
@@ -16,9 +21,13 @@ import 'package:store/features/shop/screens/reports/stock/stock_report_screen.da
 import 'package:store/features/shop/screens/reports/wishlist/whishlist_screen.dart';
 import 'package:store/features/shop/screens/sales/order_details/order_details_screen.dart';
 import 'package:store/features/shop/screens/sales/orders/order_screen.dart';
+import 'package:store/features/shop/screens/settings/shipping/shipping_settings_screen.dart';
+import 'package:store/features/shop/screens/settings/store_settings/store_settings_screen.dart';
 import 'package:store/features/shop/screens/stock/stock_recieved/stock_recived_screen.dart';
 import 'package:store/features/shop/screens/stock/stock_requests/stock_requests_screen.dart';
 import 'package:store/features/shop/screens/stock/stock_transfer/stock_transfer_screen.dart';
+import 'package:store/features/shop/screens/support_tickets/responsive_screens/support_ticket_mobile_tablet_screen.dart';
+import 'package:store/features/shop/screens/support_tickets/support_ticket_screen.dart';
 import 'package:store/routes/route_middleware.dart';
 import 'package:store/routes/routes.dart';
 
@@ -134,22 +143,22 @@ class SAppRoutes {
     GetPage(
       name: SRoutes.accountCommission,
       middlewares: [TRouteMiddleware()],
-      page: () => const SSiteLayout(),
+      page: () => const CommissionHistoryScreen(),
     ),
     GetPage(
       name: SRoutes.accountPayment,
       middlewares: [TRouteMiddleware()],
-      page: () => const SSiteLayout(),
+      page: () => const PaymentHistoryScreen(),
     ),
     GetPage(
       name: SRoutes.accountRent,
       middlewares: [TRouteMiddleware()],
-      page: () => const SSiteLayout(),
+      page: () => const RentHistoryScreen(),
     ),
     GetPage(
       name: SRoutes.accountWithdraw,
       middlewares: [TRouteMiddleware()],
-      page: () => const SSiteLayout(),
+      page: () => const MoneyWithdrawalHistoryScreen(),
     ),
     GetPage(
       name: SRoutes.settingsMedia,
@@ -159,22 +168,22 @@ class SAppRoutes {
     GetPage(
       name: SRoutes.settingsShipping,
       middlewares: [TRouteMiddleware()],
-      page: () => const SSiteLayout(),
+      page: () => const ShippingSettingsScreen(),
     ),
     GetPage(
       name: SRoutes.settingsStore,
       middlewares: [TRouteMiddleware()],
-      page: () => const SSiteLayout(),
+      page: () => const StoreSettingsScreen(),
     ),
     GetPage(
       name: SRoutes.conversation,
       middlewares: [TRouteMiddleware()],
-      page: () => const SSiteLayout(),
+      page: () => const ConversationScreen(),
     ),
     GetPage(
       name: SRoutes.supportTicket,
       middlewares: [TRouteMiddleware()],
-      page: () => const SSiteLayout(),
+      page: () => const SupportTicketScreen(),
     ),
   ];
 }

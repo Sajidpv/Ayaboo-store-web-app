@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:store/common/widgets/breadcrumbs/breadcrumbs_with_heading.dart';
-import 'package:store/features/shop/screens/reports/searchs/tables/user_searches_table.dart';
 import 'package:store/utils/constants/sizes.dart';
 
-class UserSearchDesktopMobileTabletScreen extends StatelessWidget {
-  const UserSearchDesktopMobileTabletScreen({super.key});
+class ConversationMobileTabletScreen extends StatelessWidget {
+  const ConversationMobileTabletScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,10 +15,9 @@ class UserSearchDesktopMobileTabletScreen extends StatelessWidget {
             spacing: TSizes.defaultSpace,
             children: [
               SBreadcrumbsWithHeading(
-                breadcrumbItems: ['Reports / User Searches'],
-                heading: 'User Searches',
+                breadcrumbItems: ['conversation'],
+                heading: 'Conversations',
               ),
-              UserSearchesTable()
             ],
           ),
         ),

@@ -11,6 +11,7 @@ class SContainerWidget extends StatelessWidget {
   final EdgeInsets? margin;
   final EdgeInsets padding;
   final void Function()? onTap;
+  final BorderRadiusGeometry? borderRadius;
 
   const SContainerWidget({
     super.key,
@@ -26,6 +27,7 @@ class SContainerWidget extends StatelessWidget {
     this.padding = const EdgeInsets.all(TSizes.md),
     this.onTap,
     this.elevation,
+    this.borderRadius,
   });
 
   @override
@@ -44,7 +46,7 @@ class SContainerWidget extends StatelessWidget {
               border: showBorder
                   ? Border.all(color: borderColor.withValues(alpha: .5))
                   : null,
-              borderRadius: BorderRadius.circular(radius!),
+              borderRadius: borderRadius ?? BorderRadius.circular(radius!),
               color: backgroundColor,
               boxShadow: [
                 if (showShadow)

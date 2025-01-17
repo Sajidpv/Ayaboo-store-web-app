@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:store/common/widgets/breadcrumbs/breadcrumbs_with_heading.dart';
+import 'package:store/features/shop/screens/reports/table_data/report_table.dart';
 import 'package:store/utils/constants/sizes.dart';
 
 class SalesRepostDesktopMobileTabletScreen extends StatelessWidget {
@@ -15,8 +16,11 @@ class SalesRepostDesktopMobileTabletScreen extends StatelessWidget {
             spacing: TSizes.defaultSpace,
             children: [
               SBreadcrumbsWithHeading(
-                breadcrumbItems: ['Reports/Sales'],
+                breadcrumbItems: ['Reports / Sales'],
                 heading: 'Sales Report',
+              ),
+              ReportTable(
+                trailing: 'Products',
               )
             ],
           ),

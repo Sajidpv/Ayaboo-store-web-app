@@ -5,6 +5,7 @@ import 'package:store/routes/routes.dart';
 import 'package:store/utils/constants/colors.dart';
 
 import 'package:store/utils/constants/sizes.dart';
+import 'package:store/utils/device/device_utility.dart';
 
 class SBreadcrumbsWithHeading extends StatelessWidget {
   const SBreadcrumbsWithHeading(
@@ -71,7 +72,15 @@ class SBreadcrumbsWithHeading extends StatelessWidget {
                 IconButton(
                     onPressed: () => Get.back(),
                     icon: const Icon(Icons.arrow_back)),
-              if (heading != null) SPageHeading(heading: heading!, style: style)
+              if (heading != null)
+                SPageHeading(
+                  heading: heading!,
+                  style: style ??
+                      Theme.of(context).textTheme.headlineMedium!.apply(
+                          fontSizeFactor: SDeviceUtils.isMobileScreen(context)
+                              ? context.width * .003
+                              : 1),
+                )
             ],
           )
       ],

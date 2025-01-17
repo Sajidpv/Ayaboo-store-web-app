@@ -34,7 +34,7 @@ class MenuItem extends StatelessWidget {
       child: isExpandable
           ? _buildExpansionTile(menuController, context)
           : Padding(
-              padding: const EdgeInsets.symmetric(vertical: TSizes.sm),
+              padding: const EdgeInsets.symmetric(vertical: TSizes.xs),
               child:
                   _buildMenu(menuController: menuController, context: context),
             ),
@@ -59,11 +59,8 @@ class MenuItem extends StatelessWidget {
               menuController, context, menuController.isExActive(parent ?? '')),
           children: children!
               .map((child) => Padding(
-                    padding: EdgeInsets.symmetric(
-                        vertical: menuController.isActive(route ?? "")
-                            ? TSizes.md
-                            : TSizes.sm,
-                        horizontal: TSizes.lg),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: TSizes.sm, horizontal: TSizes.lg),
                     child: child,
                   ))
               .toList(),
