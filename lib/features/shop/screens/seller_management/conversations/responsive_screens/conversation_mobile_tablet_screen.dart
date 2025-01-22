@@ -9,8 +9,8 @@ import 'package:store/features/shop/screens/conversations/chat/chat_screen.dart'
 import 'package:store/utils/constants/sizes.dart';
 import 'package:store/utils/device/device_utility.dart';
 
-class ConversationMobileTabletScreen extends StatelessWidget {
-  const ConversationMobileTabletScreen({super.key});
+class SellerConversationMobileTabletScreen extends StatelessWidget {
+  const SellerConversationMobileTabletScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +28,8 @@ class ConversationMobileTabletScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   const SBreadcrumbsWithHeading(
-                    breadcrumbItems: ['conversation'],
-                    heading: 'Conversations',
+                    breadcrumbItems: ['seller / conversation'],
+                    heading: 'Seller Conversations',
                   ),
                   if (!SDeviceUtils.isMobileScreen(context))
                     Obx(() => controller.onChatScreen.value

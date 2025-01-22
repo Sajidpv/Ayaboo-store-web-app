@@ -51,6 +51,7 @@ class OrderTable extends StatelessWidget {
             return SPaginatedDataTable(
                 minWidth: 786,
                 dataRowHeight: 56,
+
                 /////pagination
 
                 onPageChanged: (value) {},

@@ -39,6 +39,7 @@ class SRoutes {
   static const String settingsStore = '/settings/store';
   static const String settingsShipping = '/settings/shipping';
   static const String conversation = '/conversations';
+  static const String conversationChat = '/conversations/chat';
   static const String supportTicket = '/support-ticket';
 
   static List sideBarMenuItems = [

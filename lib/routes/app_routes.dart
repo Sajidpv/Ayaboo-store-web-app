@@ -21,12 +21,13 @@ import 'package:store/features/shop/screens/reports/stock/stock_report_screen.da
 import 'package:store/features/shop/screens/reports/wishlist/whishlist_screen.dart';
 import 'package:store/features/shop/screens/sales/order_details/order_details_screen.dart';
 import 'package:store/features/shop/screens/sales/orders/order_screen.dart';
+import 'package:store/features/shop/screens/seller_management/conversations/conversation_screen.dart';
+import 'package:store/features/shop/screens/seller_management/seller_product/seller_product_screen.dart';
 import 'package:store/features/shop/screens/settings/shipping/shipping_settings_screen.dart';
 import 'package:store/features/shop/screens/settings/store_settings/store_settings_screen.dart';
 import 'package:store/features/shop/screens/stock/stock_recieved/stock_recived_screen.dart';
 import 'package:store/features/shop/screens/stock/stock_requests/stock_requests_screen.dart';
 import 'package:store/features/shop/screens/stock/stock_transfer/stock_transfer_screen.dart';
-import 'package:store/features/shop/screens/support_tickets/responsive_screens/support_ticket_mobile_tablet_screen.dart';
 import 'package:store/features/shop/screens/support_tickets/support_ticket_screen.dart';
 import 'package:store/routes/route_middleware.dart';
 import 'package:store/routes/routes.dart';
@@ -34,7 +35,7 @@ import 'package:store/routes/routes.dart';
 class SAppRoutes {
   static final List<GetPage> pages = [
     GetPage(
-      name: SRoutes.n404,
+      name: '/not-found',
       page: () => const NotFoundPage(),
     ),
     GetPage(
@@ -103,12 +104,12 @@ class SAppRoutes {
     GetPage(
       name: SRoutes.sellerConversation,
       middlewares: [TRouteMiddleware()],
-      page: () => const SSiteLayout(),
+      page: () => const SellerConversationScreen(),
     ),
     GetPage(
       name: SRoutes.sellerProducts,
       middlewares: [TRouteMiddleware()],
-      page: () => const SSiteLayout(),
+      page: () => const SellerProductScreen(),
     ),
     GetPage(
       name: SRoutes.sellerReturns,

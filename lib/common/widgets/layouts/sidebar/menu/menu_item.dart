@@ -13,8 +13,9 @@ class MenuItem extends StatelessWidget {
     required this.itemName,
     this.children,
     this.icon = Icons.adjust_rounded,
+    this.parent,
   });
-  final String? route;
+  final String? route, parent;
   final String? image;
   final IconData? icon;
   final String itemName;
@@ -25,9 +26,19 @@ class MenuItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final menuController = Get.put(SidebarController());
     final isExpandable = children != null && children!.isNotEmpty;
-    return isExpandable
-        ? _buildExpansionTile(menuController, context)
-        : _buildMenu(menuController: menuController, context: context);
+    return InkWell(
+      onTap: () => route != null ? menuController.onMenuTaped(route!) : null,
+      onHover: (hovering) => hovering
+          ? menuController.changeHoveredItem(route ?? '')
+          : menuController.changeHoveredItem(''),
+      child: isExpandable
+          ? _buildExpansionTile(menuController, context)
+          : Padding(
+              padding: const EdgeInsets.symmetric(vertical: TSizes.xs),
+              child:
+                  _buildMenu(menuController: menuController, context: context),
+            ),
+    );
   }
 
 // Widget for expandable menu item
@@ -45,14 +56,11 @@ class MenuItem extends StatelessWidget {
           key: PageStorageKey<String>(route ?? ''), // Ensure state persistence
           initiallyExpanded: menuController.isActive(route ?? ''),
           title: _buildMenuTitle(
-              menuController, context, menuController.isActive(route ?? '')),
+              menuController, context, menuController.isExActive(parent ?? '')),
           children: children!
               .map((child) => Padding(
-                    padding: EdgeInsets.symmetric(
-                        vertical: menuController.isActive(route ?? "")
-                            ? TSizes.md
-                            : TSizes.sm,
-                        horizontal: TSizes.lg),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: TSizes.sm, horizontal: TSizes.lg),
                     child: child,
                   ))
               .toList(),
@@ -64,22 +72,16 @@ class MenuItem extends StatelessWidget {
   Widget _buildMenu(
       {required SidebarController menuController,
       required BuildContext context}) {
-    return InkWell(
-      onTap: () => menuController.onMenuTaped(route ?? ''),
-      onHover: (hovering) => hovering
-          ? menuController.changeHoveredItem(route ?? '')
-          : menuController.changeHoveredItem(''),
-      child: Obx(
-        () => Container(
-          decoration: BoxDecoration(
-              color: menuController.isActive(route ?? '')
-                  ? TColors.black
-                  : Colors.transparent,
-              borderRadius: BorderRadius.circular(TSizes.cardRadiusSm)),
-          child: _buildMenuTitle(
-              menuController, context, menuController.isActive(route ?? '')),
-        ).showCursorOnHoverIfWeb.applyHoverEffectIfWeb,
-      ),
+    return Obx(
+      () => Container(
+        decoration: BoxDecoration(
+            color: menuController.isActive(route ?? '')
+                ? TColors.black
+                : Colors.transparent,
+            borderRadius: BorderRadius.circular(TSizes.cardRadiusSm)),
+        child: _buildMenuTitle(
+            menuController, context, menuController.isActive(route ?? '')),
+      ).showCursorOnHoverIfWeb.applyHoverEffectIfWeb,
     );
   }
 
@@ -95,11 +97,16 @@ class MenuItem extends StatelessWidget {
                     : TSizes.xs,
                 horizontal: TSizes.md),
             child: image != null
-                ? Image.asset(image!)
+                ? Image.asset(
+                    image!,
+                    width: 15,
+                  )
                 : Icon(
                     icon,
-                    color: TColors.grey.withValues(alpha: .6),
-                    size: 10,
+                    color: isActive
+                        ? TColors.primary
+                        : TColors.grey.withValues(alpha: .6),
+                    size: 15,
                   )),
         Flexible(
             child: Text(itemName,

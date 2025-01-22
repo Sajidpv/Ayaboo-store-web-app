@@ -5,6 +5,7 @@ import 'package:store/utils/constants/sizes.dart';
 class SContainerWidget extends StatelessWidget {
   final Widget? child;
   final double? radius;
+  final double minWidth, maxWidth;
   final double? width, height, elevation;
   final bool showBorder, showShadow;
   final Color borderColor, backgroundColor;
@@ -28,35 +29,40 @@ class SContainerWidget extends StatelessWidget {
     this.onTap,
     this.elevation,
     this.borderRadius,
+    this.minWidth = double.infinity,
+    this.maxWidth = double.infinity,
   });
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Material(
-        borderRadius: BorderRadius.circular(radius!),
-        elevation: elevation ?? 0,
-        child: Container(
-          margin: margin,
-          padding: padding,
-          width: width,
-          height: height,
-          decoration: BoxDecoration(
-              border: showBorder
-                  ? Border.all(color: borderColor.withValues(alpha: .5))
-                  : null,
-              borderRadius: borderRadius ?? BorderRadius.circular(radius!),
-              color: backgroundColor,
-              boxShadow: [
-                if (showShadow)
-                  BoxShadow(
-                      color: TColors.grey.withValues(alpha: .1),
-                      spreadRadius: 5,
-                      blurRadius: 8,
-                      offset: const Offset(0, 3))
-              ]),
-          child: child,
+    return ConstrainedBox(
+      constraints: BoxConstraints(minWidth: minWidth, maxWidth: maxWidth),
+      child: GestureDetector(
+        onTap: onTap,
+        child: Material(
+          borderRadius: BorderRadius.circular(radius!),
+          elevation: elevation ?? 0,
+          child: Container(
+            margin: margin,
+            padding: padding,
+            width: width,
+            height: height,
+            decoration: BoxDecoration(
+                border: showBorder
+                    ? Border.all(color: borderColor.withValues(alpha: .5))
+                    : null,
+                borderRadius: borderRadius ?? BorderRadius.circular(radius!),
+                color: backgroundColor,
+                boxShadow: [
+                  if (showShadow)
+                    BoxShadow(
+                        color: TColors.grey.withValues(alpha: .1),
+                        spreadRadius: 5,
+                        blurRadius: 8,
+                        offset: const Offset(0, 3))
+                ]),
+            child: child,
+          ),
         ),
       ),
     );

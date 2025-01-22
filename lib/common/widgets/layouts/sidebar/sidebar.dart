@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:store/common/widgets/layouts/sidebar/widgets/menu_item.dart';
+import 'package:store/common/widgets/layouts/sidebar/menu/menu_item.dart';
 import 'package:store/routes/routes.dart';
 import 'package:store/utils/constants/colors.dart';
 import 'package:store/utils/constants/image_strings.dart';

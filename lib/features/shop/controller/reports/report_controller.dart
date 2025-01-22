@@ -122,6 +122,15 @@ class ReportController extends GetxController {
     },
   ];
   final RxList<bool> expandedRows = RxList.generate(20, (_) => false);
+  final List<String> sellerProductTypes = ['product', 'requested'];
+  Rx<String> selectedProductType = 'product'.obs;
+  final Rx<Map<int, bool>> expandedRow = Rx<Map<int, bool>>({
+    for (int i = 0; i < 50; i++) i: false,
+  });
+
+  void changeProductType(String value) {
+    selectedProductType.value = value;
+  }
 
   void expandTableRow(index) {
     expandedRows[index] = !expandedRows[index];

@@ -27,37 +27,30 @@ Widget buildTextChoiceChip({
     onSelected: onSelected,
   );
 }
-// Widget buildChoiceChip({
-//   required String label,
-//   required bool selected,
-//   required bool isEnabled,
-//   required Function(bool) onSelected,
-// }) {
-//   return ChoiceChip(
-//     shape: RoundedRectangleBorder(
-//       borderRadius: BorderRadius.circular(0),
-//     ),
-//     side: BorderSide(
-//         color:
-//             isEnabled ? TColors.black : TColors.darkGrey.withValues(alpha: .1)),
-//     showCheckmark: false,
-//     selectedColor:
-//         isEnabled ? TColors.black : TColors.darkGrey.withValues(alpha: .3),
-//     backgroundColor: TColors.white,
-//     label: Text(
-//       label,
-//       style: Theme.of(Get.context!).textTheme.bodyLarge!.copyWith(
-//           color: isEnabled
-//               ? selected
-//                   ? TColors.white
-//                   : TColors.black
-//               : TColors.darkGrey,
-//           fontSize: 12),
-//     ),
-//     selected: selected,
-//     onSelected: onSelected,
-//   );
-// }
+
+Widget buildTabChoiceChipForTableHeader({
+  required String label,
+  required bool selected,
+  required Function(bool) onSelected,
+}) {
+  return ChoiceChip(
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(TSizes.defaultSpace),
+    ),
+    side: const BorderSide(color: Colors.transparent),
+    showCheckmark: false,
+    selectedColor: TColors.black,
+    backgroundColor: TColors.white,
+    label: Text(
+      label.capitalize.toString(),
+      style: Theme.of(Get.context!).textTheme.headlineMedium!.copyWith(
+          color: selected ? TColors.white : TColors.black,
+          fontSize: TSizes.fontSizeMd),
+    ),
+    selected: selected,
+    onSelected: onSelected,
+  );
+}
 
 // Widget buildImageChoiceChip({
 //   required String url,

@@ -1,5 +1,7 @@
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:store/common/widgets/data_table/controller/table_controller.dart';
 import 'package:store/utils/constants/colors.dart';
 import 'package:store/utils/constants/sizes.dart';
 import 'package:store/utils/loaders/animation_loader.dart';
@@ -31,6 +33,8 @@ class SPaginatedDataTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(PaginatedTableController());
+
     return SizedBox(
       height: tableHeight,
       child: Theme(
@@ -39,59 +43,64 @@ class SPaginatedDataTable extends StatelessWidget {
           color: TColors.white,
           elevation: 0,
         )),
-        child: PaginatedDataTable2(
-          columns: columns,
-          source: source,
-          columnSpacing: 12,
-          minWidth: minWidth,
-          dividerThickness: 0,
-          horizontalMargin: 12,
-          dataRowHeight: dataRowHeight,
-          ///////pagination
-          rowsPerPage: rowsPerPage,
-          showFirstLastButtons: true,
-          showCheckboxColumn: true,
-          onPageChanged: onPageChanged, //action while change a page
-          renderEmptyRowsInTheEnd: false, ////remove emty checkbox at last page
-          // onRowsPerPageChanged: (noOfRows) {}, for fetchingdata as pagination
+        child: Obx(() {
+          return PaginatedDataTable2(
+            columns: columns,
+            source: source,
+            columnSpacing: 12,
+            minWidth: minWidth,
+            dividerThickness: 0,
+            horizontalMargin: 12,
+            dataRowHeight: dataRowHeight,
+            ///////pagination
+            rowsPerPage: controller.rowsPerPage.value,
+            onRowsPerPageChanged: controller.onRowsPerPageChanged,
+            availableRowsPerPage: const [5, 10, 20, 50, 100],
+            showFirstLastButtons: true,
+            showCheckboxColumn: true,
+            onPageChanged: onPageChanged, //action while change a page
+            renderEmptyRowsInTheEnd:
+                false, ////remove emty checkbox at last page
+            // onRowsPerPageChanged: (noOfRows) {}, for fetchingdata as pagination
 
-          /////////SORTING///////////
-          sortAscending: sortAscending,
-          sortArrowAlwaysVisible: true,
-          sortColumnIndex: sortColumnIndex,
-          sortArrowIcon: Icons.arrow_upward,
-          sortArrowBuilder: (ascending, sorted) {
-            if (sorted) {
-              return Icon(
-                ascending ? Icons.arrow_upward : Icons.arrow_downward,
-                size: TSizes.iconSm,
-              );
-            } else {
-              return const Icon(
-                Icons.swap_vert_outlined,
-                size: TSizes.iconSm,
-              );
-            }
-          },
-          headingTextStyle: Theme.of(context)
-              .textTheme
-              .titleSmall!
-              .copyWith(fontWeight: FontWeight.bold),
-          headingRowColor: WidgetStateProperty.resolveWith(
-              (states) => headerColor!.withValues(alpha: .3)),
-          headingRowDecoration: const BoxDecoration(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(TSizes.borderRadiusMd),
-              topRight: Radius.circular(TSizes.borderRadiusMd),
+            /////////SORTING///////////
+            sortAscending: sortAscending,
+            sortArrowAlwaysVisible: true,
+            sortColumnIndex: sortColumnIndex,
+            sortArrowIcon: Icons.arrow_upward,
+            sortArrowBuilder: (ascending, sorted) {
+              if (sorted) {
+                return Icon(
+                  ascending ? Icons.arrow_upward : Icons.arrow_downward,
+                  size: TSizes.iconSm,
+                );
+              } else {
+                return const Icon(
+                  Icons.swap_vert_outlined,
+                  size: TSizes.iconSm,
+                );
+              }
+            },
+            headingTextStyle: Theme.of(context)
+                .textTheme
+                .titleSmall!
+                .copyWith(fontWeight: FontWeight.bold),
+            headingRowColor: WidgetStateProperty.resolveWith(
+                (states) => headerColor!.withValues(alpha: .3)),
+            headingRowDecoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(TSizes.borderRadiusMd),
+                topRight: Radius.circular(TSizes.borderRadiusMd),
+              ),
             ),
-          ),
-          empty: const SAnimationLoaderWidget(
-            text: 'Nothing found',
-            animation: '',
-            width: 200,
-            height: 200,
-          ),
-        ),
+            empty: const SAnimationLoaderWidget(
+              text: 'Nothing found',
+              animation: '',
+              width: 200,
+              height: 200,
+            ),
+          );
+        }),
       ),
     );
   }

@@ -3,8 +3,8 @@ import 'package:store/common/widgets/breadcrumbs/breadcrumbs_with_heading.dart';
 import 'package:store/features/shop/screens/reports/table_data/report_table.dart';
 import 'package:store/utils/constants/sizes.dart';
 
-class WhishlistDesktopMobileTabletScreen extends StatelessWidget {
-  const WhishlistDesktopMobileTabletScreen({super.key});
+class StockReportDesktopMobileTabletScreen extends StatelessWidget {
+  const StockReportDesktopMobileTabletScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +16,11 @@ class WhishlistDesktopMobileTabletScreen extends StatelessWidget {
             spacing: TSizes.defaultSpace,
             children: [
               SBreadcrumbsWithHeading(
-                breadcrumbItems: ['Reports / Whishlist'],
-                heading: 'Wishlist',
+                breadcrumbItems: ['Reports / Stock'],
+                heading: 'Stock Report',
               ),
               ReportTable(
-                trailing: 'Number of Wishes',
+                trailing: 'Stock',
               )
             ],
           ),
